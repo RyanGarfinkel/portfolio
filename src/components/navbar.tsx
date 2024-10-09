@@ -13,18 +13,12 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
 
     return (
         <div className='flex flex-row justify-between items-center w-full mx-auto sm:my-6 md:my-8 font-mono'>
-            <div className='font-semibold sm:text-lg md:text-2xl'>
+            <div className='font-semibold sm:text-[22px] md:text-[26px]'>
                 { '<RG/>'}
             </div>
-            <div className='flex flex-row items-center gap-3 sm:text-sm md:text-lg'>
+            <div className='flex flex-row items-center gap-3 sm:text-[15px] lg:text-[16px]'>
                 <button onClick={toggleDarkMode}>
-                    {
-                        isDarkMode ? (
-                            <SunIcon/>
-                        ) : (
-                            <MoonIcon/>
-                        )
-                    }
+                    { isDarkMode ? ( <SunIcon/> ) : ( <MoonIcon/> ) }
                 </button>
                 <div>|</div>
                 <Link href='/' className={path === '/' ? 'underline underline-offset-4' : ''}>Home</Link>
