@@ -1,7 +1,7 @@
 import Navbar from '@/components/navbar';
-import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
+import '@/styles/globals.css';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, isDarkMode, toggleDarkMode }) => {
 
   return (
-    <div className='flex flex-col justify-center mx-auto sm:full lg:w-[750px] sm:px-3 md:px-8 lg:px-0'>
+    <div className='flex flex-col justify-center mx-auto sm:full lg:w-[750px] sm:px-5 md:px-8 lg:px-0'>
           <title>Ryan Garfinkel</title>
           <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
           { children }

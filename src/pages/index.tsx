@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className='flex flex-col w-full'>
       <div className='text-xl font-semibold'>
-        Hi, I&apos;m Ryan Garfinkel &#x1F44B;
+        Hey, I&apos;m Ryan &#x1F44B;
       </div>
       <div className='my-4 leading-loose'>
         <div className='mb-7'>
