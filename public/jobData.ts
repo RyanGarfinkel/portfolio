@@ -15,6 +15,7 @@ const jobHistory: Job[] = [
         company: 'University of Central Florida',
         location: 'Orlando, Florida',
         startDate: 'Aug. 2024',
+        postDescription: 'So far during the Fall 2024 semester, I\'ve been held multiple office hours each week to address student inquiries, with debuggina being a common topic. I\'ve been able to quickly understand unfamilair code and guide student towards the changes they need to make.'
     },
     {
         position: 'IT Intern',
@@ -26,7 +27,7 @@ const jobHistory: Job[] = [
         description: [
             'Developed a page to display site metrics, utilizing the PrimeNG component library and Google Maps API to enhance data visualization for other employees, aimed to support decision making.',
             'Made multiple UI edits across multiple pages to improve user experience and ensure consistency.',
-            'Created a POC for generating PDFs in C# using the QuestPDF, intended for marking sites.',
+            'Created a POC for generating PDFs in C# using QuestPDF, intended for marking sites.',
         ],
         postDescription: 'Throughout the summer, I worked extensively with Angular, HTML, CSS, and TypeScript, and I also gained significant experience with component libraries, particularly PrimeNG.',
     },
