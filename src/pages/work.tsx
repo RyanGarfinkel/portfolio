@@ -26,14 +26,14 @@ const WorkPage = () => {
                                 { job.startDate } - { job.endDate ?? 'Present' }, { job.location }
                             </div>
                             {
-                                job.preDescription ? (
+                                job.preDescription &&  (
                                     <div className='my-3'>
                                         { job.preDescription }
                                     </div>
-                                ) : null
+                                )
                             }
                             {
-                                job.description ? (
+                                job.description &&  (
                                     <ul className='list-disc pl-5'>
                                         {
                                             job.description.map((desc, i) => (
@@ -43,14 +43,14 @@ const WorkPage = () => {
                                             ))
                                         }
                                     </ul>
-                                ) : null
+                                )
                             }
                             {
-                                job.postDescription ? (
+                                job.postDescription && (
                                     <div className='mt-3 mb-5'>
                                         { job.postDescription }
                                     </div>
-                                ) : null
+                                )
                             }
                         </div>
                     </div> 
