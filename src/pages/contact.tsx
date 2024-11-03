@@ -53,6 +53,8 @@ const Contact = () => {
         message: ''
     });
 
+    const [isSending, setIsSending] = useState(false);
+
     const handleKeyDown = (field: string, e: React.KeyboardEvent<HTMLInputElement>, nextRef: MutableRefObject<HTMLElement | null>) => {
         if(e.key !== 'Enter')
             return;
@@ -75,17 +77,61 @@ const Contact = () => {
         setValues(({ ...values, [field]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        e.stopPropagation();
 
+        if(isSending)
+            return;
+        
         if(!values.firstName || !values.lastName || !values.email || !values.subject || !values.message)
             return toast.warning('Please fill out all fields.', options);
 
         else if(errors.email)
             return toast.warning('Please make sure email is valid.', options);
+
+        setIsSending(true);
+
+        toast.info('Sending message...', { ...options, toastId: 'sending' });
+
+        const res = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(values),
+        });
+
+        toast.dismiss('sending');
+
+        setIsSending(false);
         
-        toast.success('Message sent successfully!', options);
+        if(res.status === 204)
+        {
+            toast.success('Message sent successfully!', options);
+            resetForm();
+        }
+        else
+            toast.error('Message failed to send.', options);
     };
+
+    const resetForm = () => {
+        setValues({
+            firstName: '',
+            lastName: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
+
+        setErrors({
+            firstName: '',
+            lastName: '',
+            email: '',
+            subject: '',
+            message: ''
+        });
+    }
 
     return (
         <form>
@@ -96,9 +142,10 @@ const Contact = () => {
                 <div className='mb-4'>
                 <div className='flex gap-4'>
                     <div className='w-1/2'>
-                        <label className='block mb-2'>First Name</label>
+                        <label className='block mb-2'>First Name *</label>
                         <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.firstName ? 'border-red-500' : ''}`}
                             placeholder='Ryan'
+                            value={values.firstName}
                             onChange={(e) => handleChange('firstName', e.target.value)}
                             onKeyDown={(e) => handleKeyDown('firstName', e, lastNameRef)}
                         />
@@ -107,9 +154,10 @@ const Contact = () => {
                         }
                     </div>
                     <div className='w-1/2'>
-                        <label className='block mb-2'>Last Name</label>
+                        <label className='block mb-2'>Last Name *</label>
                         <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.lastName ? 'border-red-500' : ''}`}
                             placeholder='Garfinkel'
+                            value={values.lastName}
                             onChange={(e) => handleChange('lastName', e.target.value)}
                             ref={lastNameRef}
                             onKeyDown={(e) => handleKeyDown('lastName', e, emailRef)}
@@ -121,11 +169,12 @@ const Contact = () => {
                 </div>
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Email</label>
+                    <label className='block mb-2'>Email *</label>
                     <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.email ? 'border-red-500' : ''}`}
-                        placeholder='example@example.com'
-                        onChange={(e) => handleChange('email', e.target.value)}
+                        placeholder='name@example.com'
+                        value={values.email}
                         ref={emailRef}
+                        onChange={(e) => handleChange('email', e.target.value)}
                         onKeyDown={(e) => handleKeyDown('email', e, subjectRef)}
                     />
                     {
@@ -133,11 +182,12 @@ const Contact = () => {
                     }
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Subject</label>
+                    <label className='block mb-2'>Subject *</label>
                     <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.subject ? 'border-red-500' : ''}`}
                         placeholder='Inquiry'
-                        onChange={(e) => handleChange('subject', e.target.value)}
                         ref={subjectRef}
+                        value={values.subject}
+                        onChange={(e) => handleChange('subject', e.target.value)}
                         onKeyDown={(e) => handleKeyDown('subject', e, messageRef)}
                     />
                     {
@@ -145,11 +195,12 @@ const Contact = () => {
                     }
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Message</label>
+                    <label className='block mb-2'>Message *</label>
                     <textarea className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.message ? 'border-red-500' : ''} min-h-[100px] max-h-[250px]`}
                             placeholder='Your message...'
-                            onChange={(e) => handleChange('message', e.target.value)}
                             ref={messageRef}
+                            value={values.message}
+                            onChange={(e) => handleChange('message', e.target.value)}
                     />
                     {
                         errors.message && <div className='text-red-500 text-sm mt-1'>{errors.message}</div>
