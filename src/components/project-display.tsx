@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import { Project } from '../../public/projectData';
 import { useRouter } from 'next/router';
 import { ArrowTopRightIcon, ExitIcon } from '@radix-ui/react-icons';
+import Carousel from './carousel';
 
 interface ProjectDisplayProps {
     project: Project;
@@ -23,7 +23,7 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ project }) => {
                     <ExitIcon width={50} height={25}/>
                 </button>
             </div>
-            <Image src={project.imgUrl} alt={project.title} width={1} height={1} className='w-full sm:h-[200px] md:h-[350px] rounded-lg mb-4'/>
+            <Carousel title={project.title} urls={project.imgUrl}/>
             <div className='mt-7 mb-4'>
                 { project.p1 }
             </div>

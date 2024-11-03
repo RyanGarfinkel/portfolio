@@ -41,7 +41,7 @@ const Card: React.FC<CardProps> = ({ project }) => {
 
     return (
         <div className='flex flex-col sm:w-[325px] md:w-[350px] h-[550px] border border-gray-300 rounded-lg p-4 shadow-lg before:bg-white before:bg-opacity-20' onClick={handleClick}>
-            <Image src={project.imgUrl} alt={project.title} width={350} height={192} className='w-full h-48 rounded-lg mb-4'/>
+            <Image src={project.imgUrl[0]} alt={project.title} width={350} height={192} className='w-full h-48 rounded-lg mb-4'/>
             <div className='flex flex-row justify-between items-center'>
                 <div className='font-semibold text-lg'>
                     { project.title }
