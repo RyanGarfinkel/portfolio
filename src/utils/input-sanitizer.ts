@@ -7,6 +7,6 @@ const isEmail = (email: string): boolean => {
     return emailRegex.test(email);
 };
 
-const isEmpty = (input: string): boolean => input.trim() === '';
+const isEmpty = (input: string): boolean => !input.trim();
 
-const 
+export { isEmail, isEmpty };
