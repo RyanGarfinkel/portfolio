@@ -1,8 +1,9 @@
 import { isEmail, isEmpty } from "@/utils/input-sanitizer";
 import { NextApiRequest, NextApiResponse } from "next";
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -19,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const { firstName, lastName, email, subject, message } = req.body;
 
-    if(!isEmpty(firstName) || !isEmpty(lastName) || !isEmpty(email) || !isEmpty(subject) || !isEmpty(message))
+    if(isEmpty(firstName) || isEmpty(lastName) || isEmpty(email) || isEmpty(subject) || isEmpty(message))
         return res.status(400).json({ message: 'Missing one or more fields.' });
     else if(!isEmail(email))
         return res.status(400).json({ message: 'Invalid email.' });
