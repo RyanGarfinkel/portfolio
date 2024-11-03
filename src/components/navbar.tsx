@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
                 <Link href='/' className={path === '/' ? 'underline underline-offset-4' : ''}>Home</Link>
                 <Link href='/work' className={path === '/work' ? 'underline underline-offset-4' : ''}>Work</Link>
                 <Link href='/projects' className={path === '/projects' ? 'underline underline-offset-4' : ''}>Projects</Link> 
-                <Link href='/blog' className={path === '/blog' ? 'underline underline-offset-4' : ''}>Blog</Link>
+                <Link href='/contact' className={path === '/contact' ? 'underline underline-offset-4' : ''}>Contact</Link>
             </div>
         </div>
     );
