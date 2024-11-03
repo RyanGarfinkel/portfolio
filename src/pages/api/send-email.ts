@@ -1,5 +1,5 @@
-import { isEmail, isEmpty } from "@/utils/input-sanitizer";
-import { NextApiRequest, NextApiResponse } from "next";
+import { isEmail, isEmpty } from '@/utils/input-sanitizer';
+import { NextApiRequest, NextApiResponse } from 'next';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
 
