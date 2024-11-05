@@ -15,7 +15,7 @@ const jobHistory: Job[] = [
         company: 'University of Central Florida',
         location: 'Orlando, Florida',
         startDate: 'Aug. 2024',
-        postDescription: 'So far during the Fall 2024 semester, I\'ve been held multiple office hours each week to address student inquiries, with debuggina being a common topic. I\'ve been able to quickly understand unfamilair code and guide student towards the changes they need to make.'
+        postDescription: 'So far during the Fall 2024 semester, I\'ve been held multiple office hours each week to address student inquiries, with debugging being a common topic. I\'ve been able to quickly understand unfamilair code and guide student towards the changes they need to make.'
     },
     {
         position: 'IT Intern',

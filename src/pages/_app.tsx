@@ -12,7 +12,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, isDarkMode, toggleDarkMode }) => {
 
   return (
-    <div className='flex flex-col justify-center mx-auto sm:full lg:w-[750px] sm:px-5 md:px-8 lg:px-0'>
+    <div className='flex flex-col justify-center mx-auto sm:full md:w-[750px] sm:px-5 md:px-8 lg:px-0 mb-10'>
           <title>Ryan Garfinkel</title>
           <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
           { children }
@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ children, isDarkMode, toggleDarkMode })
   );
 };
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
 
   const [isDarkMode, setIsDarkMode] = useState(true);
 
