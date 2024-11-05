@@ -7,40 +7,13 @@ interface CardProps {
     project: Project;
 }
 
-const getColors = (tech: string) => {
-    switch(tech) {
-        case 'Socket.io':
-            return 'bg-blue-200 text-blue-800';
-        case 'MongoDB':
-            return 'bg-green-200 text-gray-800';
-        case 'Node.js':
-            return 'bg-green-500 text-white';
-        case 'Express.js':
-            return 'bg-gray-800 text-white';
-        case 'JWT':
-            return 'bg-red-500 text-white';
-        case 'C#':
-            return 'bg-blue-500 text-white';
-        case 'Unity':
-            return 'bg-black text-white';
-        case 'PHP':
-            return 'bg-blue-800 text-white';
-        case 'MySQL':
-            return 'bg-blue-400 text';
-        case 'Nodemailer':
-            return 'bg-blue-200 text-blue-800';
-        default:
-            return 'bg-gray-200 text-gray-800';
-    };
-}
-
 const Card: React.FC<CardProps> = ({ project }) => {
     
     const router = useRouter();
     const handleClick = () => router.push(`/projects?id=${project.title.toLowerCase().replace(' ', '-')}`);
 
     return (
-        <div className='flex flex-col sm:w-[325px] md:w-[350px] h-[550px] border border-gray-300 rounded-lg p-4 shadow-lg before:bg-white before:bg-opacity-20' onClick={handleClick}>
+        <div className='flex flex-col sm:w-[325px] md:w-[350px] h-[550px] border border-gray-300 rounded-xl p-4 shadow-lg before:bg-white before:bg-opacity-20' onClick={handleClick}>
             <Image src={project.imgUrl[0]} alt={project.title} width={350} height={192} className='w-full h-48 rounded-lg mb-4'/>
             <div className='flex flex-row justify-between items-center'>
                 <div className='font-semibold text-lg'>
@@ -50,16 +23,14 @@ const Card: React.FC<CardProps> = ({ project }) => {
                     { project.start } { project.end ? ` - ${project.end}` : '' }
                 </div>
             </div>
-            <div className='max-h-[168px] my-3 overflow-hidden text-ellipsis'>
-                <p className='line-clamp-[7]'>
-                    { project.pretext }
-                </p>
+            <div className='h-[168px] mt-3 mb-7'>
+                { project.pretext }
             </div>
             <div className='flex flex-wrap h-[56px]'>
                 {
                     project.techStack.map((tech, index) => (
-                        <div key={index} className={`h-[20px] ${getColors(tech)} text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 rounded`}>
-                            {tech}
+                        <div key={index} className={`h-[22px] text-xs font-medium mr-2 mb-2 px-2.5 py-0.5 border shadow-lg rounded`}>
+                            { tech }
                         </div>
                     ))
                 }

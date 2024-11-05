@@ -1,11 +1,18 @@
-import { ArrowLeftIcon, ArrowRightIcon, PauseIcon, PlayIcon } from '@radix-ui/react-icons';
+import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import ReactPlayer from 'react-player';
 
 interface CarouselProps {
     title: string;
     urls: string[];
 }
+
+const getDisplay = (url: string, alt: string) => url.includes('.mp4') ? (
+    <ReactPlayer url={url} controls pip={false} playbackRate={1}/>
+) : (
+    <Image src={url} alt={alt} width={350} height={192} className='w-full sm:h-48 md:h-[288px] rounded-lg mb-4'/>
+)
 
 const Carousel: React.FC<CarouselProps> = ({ title, urls }) => {
 
@@ -15,20 +22,10 @@ const Carousel: React.FC<CarouselProps> = ({ title, urls }) => {
     const shiftLeft = () => setIndex((index - 1 + n) % n);
     const shiftRight = () => setIndex((index + 1) % n);
 
-    const movieRef = useRef<HTMLVideoElement>(null);
-
-    if(urls.length == 1)
-        return <Image src={urls[0]} alt={title} width={350} height={192} className='w-full sm:h-48 md:h-[288px] rounded-lg mb-4'/>;
-
-    const togglePlayPause = () => {
-        if(!movieRef || !movieRef.current)
-            return;
-
-        if(movieRef.current.paused)
-            movieRef.current.play();
-        else
-            movieRef.current.pause();
-    }
+    if(n === 0)
+        return null;
+    else if(n === 1)
+        return getDisplay(urls[0], title);
 
     return (
         <div className='flex flex-col justify-center items-center'>
@@ -37,14 +34,7 @@ const Carousel: React.FC<CarouselProps> = ({ title, urls }) => {
                     <ArrowLeftIcon width={25} height={25}/>
                 </button>
                 {
-                    urls[index].includes('.mp4') ? (
-                        <button onClick={togglePlayPause}>
-                            <video width={320} height={192} className='sm:w-[275px] md:w-[650px] sm:h-48 md:h-[288px]  rounded-lg mx-4 mb-4' src={urls[index]} ref={movieRef} />
-                        </button>
-                    ) :
-                    (
-                        <Image src={urls[index]} alt={title} width={320} height={192} className='sm:w-[275px] md:w-[650px] sm:h-48 md:h-[288px]  rounded-lg mx-4 mb-4'/>
-                    )
+                    getDisplay(urls[index], title)
                 }
                 <button onClick={shiftRight}>
                     <ArrowRightIcon width={25} height={25}/>
