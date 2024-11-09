@@ -5,4 +5,6 @@ const isEmail = (email: string): boolean => emailRegex.test(email.trim());
 
 const isEmpty = (input: string): boolean => !input.trim();
 
-export { isEmail, isEmpty };
+const replaceCode = (input: string): string => input.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+export { isEmail, isEmpty, replaceCode };

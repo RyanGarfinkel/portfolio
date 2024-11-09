@@ -1,6 +1,6 @@
 import { Project } from '../../public/projectData';
 import { useRouter } from 'next/router';
-import { ArrowTopRightIcon, ExitIcon } from '@radix-ui/react-icons';
+import { ArrowTopRightIcon, ChevronLeftIcon } from '@radix-ui/react-icons';
 import Carousel from './carousel';
 
 interface ProjectDisplayProps {
@@ -15,13 +15,14 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ project }) => {
 
     return (
         <div className='flex flex-col'>
-            <div className='flex flex-row justify-between mb-4 font-semibold sm:text-[22px] md:text-[26px]'>
-                <div>
-                    { project.title }
-                </div>
+            <div className='flex flex-row items-center hover:underline hover:underline-offset-5'>
+                <ChevronLeftIcon width={17} height={17}/>
                 <button onClick={handleBackToProjects}>
-                    <ExitIcon width={50} height={25}/>
+                    Back
                 </button>
+            </div>
+            <div className='mb-4 font-semibold sm:text-[22px] md:text-[26px]'>
+                { project.title }
             </div>
             <Carousel title={project.title} urls={project.imgUrl}/>
             <div className='mt-7 mb-4'>

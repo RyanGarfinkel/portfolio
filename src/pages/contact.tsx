@@ -1,4 +1,4 @@
-import { isEmpty, isEmail } from '@/utils/input-sanitizer';
+import { isEmpty, isEmail, replaceCode } from '@/utils/input-sanitizer';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { MutableRefObject, useRef, useState } from 'react';
 import { toast, ToastContainer, ToastOptions } from 'react-toastify';
@@ -20,7 +20,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ closeToast }) => (
 
 const options: ToastOptions<unknown> = {
     position: 'bottom-right',
-    autoClose: 4000,
+    autoClose: 3000,
     closeButton: CloseButton,
     pauseOnHover: false,
     style: {
@@ -84,15 +84,24 @@ const Contact = () => {
         if(isSending)
             return;
         
+        values.firstName = replaceCode(values.firstName);
+        values.lastName = replaceCode(values.lastName);
+        values.email = replaceCode(values.email);
+        values.subject = replaceCode(values.subject);
+        values.message = replaceCode(values.message);
+        
         if(!values.firstName || !values.lastName || !values.email || !values.subject || !values.message)
-            return toast.warning('Please fill out all fields.', options);
-
+            return !toast.isActive('missing_fields') ? toast.warning('Please fill out all fields.', { ...options, toastId: 'missing_fields'}) : null;
         else if(errors.email)
-            return toast.warning('Please make sure email is valid.', options);
+            return !toast.isActive('invalid_email') ? toast.warning('Please enter valid email.', { ...options, toastId: 'invalid_email'}) : null;
 
+        toast.clearWaitingQueue();
+        toast.dismiss('missing_fields');
+        toast.dismiss('invalid_email');
+        
         setIsSending(true);
 
-        toast.info('Sending message...', { ...options, toastId: 'sending' });
+        toast.info('Sending message...', { ...options, toastId: 'sending', autoClose: false });
 
         const res = await fetch('/api/send-email', {
             method: 'POST',
@@ -206,11 +215,11 @@ const Contact = () => {
                         errors.message && <div className='text-red-500 text-sm mt-1'>{errors.message}</div>
                     }
                 </div>
-                <button className="w-full py-2 px-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all duration-300" onClick={handleSubmit}>
+                <button className="w-full py-2 px-4 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-all duration-300" onClick={handleSubmit}>
                     Submit
                 </button>
             </div>
-            <ToastContainer limit={2}/>
+            <ToastContainer limit={1}/>
         </form>
   );
 };
