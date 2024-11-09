@@ -12,7 +12,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
     const path = usePathname();
 
     return (
-        <div className='flex flex-row justify-between items-center w-full mx-auto sm:my-6 md:my-8 font-mono'>
+        <div className='sm:hidden md:flex flex-row justify-between items-center w-full mx-auto sm:my-6 md:my-8 font-mono'>
             <div className='font-semibold sm:text-[22px] md:text-[26px]'>
                 { '<RG/>'}
             </div>

@@ -2,6 +2,7 @@ import Navbar from '@/components/navbar';
 import type { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import '@/styles/globals.css';
+import MobileNavbar from '@/components/mobile-navar';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -12,10 +13,11 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children, isDarkMode, toggleDarkMode }) => {
 
   return (
-    <div className='flex flex-col justify-center mx-auto sm:full md:w-[750px] sm:px-5 md:px-8 lg:px-0 mb-10'>
+    <div className='flex flex-col justify-center mx-auto sm:w-[375px] md:w-[750px] sm:px-5 md:px-8 lg:px-0 mb-10'>
           <title>Ryan Garfinkel</title>
           <meta name='viewport' content='width=device-width, initial-scale=1.0' />
           <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
+          <MobileNavbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode}/>
           { children }
       </div>
   );
