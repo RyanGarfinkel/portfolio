@@ -24,17 +24,6 @@ const projectData: Project[] = [
         devpost: 'https://devpost.com/software/overcharged',
     },
     {
-        title: 'Portfolio',
-        start: 'Sep. 2024',
-        end: 'Present',
-        pretext: 'My personal website showcases my skills and experience, with project highlights and a detailed work history. Built with Next.js and styled with TailwindCSS, it\'s user-friendly and fully responsive. PS - You\'re on the website right now!',
-        p1: 'My personal website highlights my skills and experiences by detailing my work history and showcasing my projects.  I focused on creating a user-friendly layout for easy navigation. Built with Next.js and styled with TailwindCSS, the site is responsive and performs seamlessly across devices. Hosted on Vercel, it also integrates libraries including Radix icons, React-Toastify, React-Player, and Nodemailer to enhance UI and functionality.',
-        p2: 'PS – You’re on the website right now!',
-        techStack: ['Next.js', 'Tailwind CSS', 'Vercel'],
-        imgUrl: ['./assets/portfolio1.png'],
-        gitHub: 'https://github.com/RyanGarfinkel/portfolio',
-    },
-    {
         title: 'Cohab',
         start: 'Feb. 2024',
         end: 'Apr. 2024',
@@ -55,7 +44,18 @@ const projectData: Project[] = [
         techStack: ['PHP', 'MySQL'],
         imgUrl: ['./assets/contact-manager.png'],
         gitHub: 'https://github.com/happysnail2357/Contact-Manager-Website',
-    }
+    },
+    {
+        title: 'Portfolio',
+        start: 'Sep. 2024',
+        end: 'Present',
+        pretext: 'My personal website showcases my skills and experience, with project highlights and a detailed work history. Built with Next.js and styled with TailwindCSS, it\'s user-friendly and fully responsive. PS - You\'re on the website right now!',
+        p1: 'My personal website highlights my skills and experiences by detailing my work history and showcasing my projects.  I focused on creating a user-friendly layout for easy navigation. Built with Next.js and styled with TailwindCSS, the site is responsive and performs seamlessly across devices. Hosted on Vercel, it also integrates libraries including Radix icons, React-Toastify, React-Player, and Nodemailer to enhance UI and functionality.',
+        p2: 'PS – You’re on the website right now!',
+        techStack: ['Next.js', 'Tailwind CSS', 'Vercel'],
+        imgUrl: ['./assets/portfolio1.png'],
+        gitHub: 'https://github.com/RyanGarfinkel/portfolio',
+    },
 ];
 
 export type { Project };

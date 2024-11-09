@@ -21,7 +21,7 @@ const Home = () => {
           exposure to best practices allowed me to contribute to various projects, making me a better software developer. 
         </div>
         <div>
-          Recently, I participated in the Knight Hacks VII hackathon at UCF, where my team won 3rd place in the NextEra: Energy Sustainability Challenge. We developed a game called
+          I recently participated in the Knight Hacks VII hackathon at UCF, where my team won 3rd place in the NextEra: Energy Sustainability Challenge. We developed a game called
           <span className='italic ml-1'>Overcharged</span>, aimed at bringing awareness to the cost of energy consumption. This was my first time working with Unity, and I&apos;m incredibly
           proud of the work we accomplished in just 36 hours! You can check out our project on our <a href={devpost} className='underline underline-offset-[5px]'>devpost</a>.
         </div>

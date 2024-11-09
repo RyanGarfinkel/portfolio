@@ -11,13 +11,6 @@ interface Job {
 
 const jobHistory: Job[] = [
     {
-        position: 'Undergraduate Learning Assistant',
-        company: 'University of Central Florida',
-        location: 'Orlando, Florida',
-        startDate: 'Aug. 2024',
-        postDescription: 'So far during the Fall 2024 semester, I\'ve been held multiple office hours each week to address student inquiries, with debugging being a common topic. I\'ve been able to quickly understand unfamilair code and guide student towards the changes they need to make.'
-    },
-    {
         position: 'IT Intern',
         company: 'Vertical Bridge',
         location: 'Boca Raton, Florida',
@@ -35,8 +28,7 @@ const jobHistory: Job[] = [
         position: 'Undergraduate Learning Assistant',
         company: 'University of Central Florida',
         location: 'Orlando, Florida',
-        startDate: 'Aug. 2023',
-        endDate: 'April 2024',
+        startDate: 'Aug. 2023 - April 2024, Aug. 2024',
         preDescription: 'I was an Undergraduate Learning Assistant (ULA) for UCF\'s Department of Engineering and Computer Science during the Fall 2023 and Spring 2024 semesters. This role provided a unique opportunity for me to practice communicating technical concepts. Notably, I:',
         description: [
             'Mentored over 250 students taking Computer Science I.',
