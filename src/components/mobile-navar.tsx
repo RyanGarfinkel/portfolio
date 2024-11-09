@@ -1,4 +1,4 @@
-import { HamburgerMenuIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -8,31 +8,31 @@ interface NavbarProps {
     toggleDarkMode: () => void;
 }
 
+const options = [
+    { path: '/', title: 'Home' },
+    { path: '/work', title: 'Work' },
+    { path: '/projects', title: 'Projects' },
+    { path: '/contact', title: 'Contact' }
+];
+
 const MobileNavbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
 
     const path = usePathname();
+
     const [isOpen, setIsOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
+    const toggleMenu = () => setIsOpen(!isOpen);
+    const ref = useRef<HTMLDivElement>(null);
 
-    const toggleMenu = () => {
-        console.log('toggle menu:', isOpen);
-        
-        if(!isOpen)
-            menuRef.current?.focus();
-
-        setIsOpen(!isOpen);
-    }
-
-    const handleOutsideClick = (e: MouseEvent) => {
-        if(menuRef.current && !menuRef.current.contains(e.target as Node))
+    const handleClickOutside = (e: MouseEvent) => {
+        if(ref.current && !ref.current.contains(e.target as Node))
             setIsOpen(false);
-    };
+    }
 
     useEffect(() => {
         if(isOpen)
-            document.addEventListener('mousedown', handleOutsideClick);
+            document.addEventListener('mousedown', handleClickOutside);
         else
-            document.removeEventListener('mousedown', handleOutsideClick);
+            document.removeEventListener('mousedown', handleClickOutside);
     }, [isOpen]);
 
     return (
@@ -40,36 +40,38 @@ const MobileNavbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => 
             <div className='font-semibold text-[22px]'>
                 { '<RG/>'}
             </div>
-            <button onClick={toggleMenu}>
-                <HamburgerMenuIcon width={20} height={20}/>
-            </button>
-            {
-                isOpen && (
-                    <div className='absolute top-0 right-0 bg-background border rounded-lg shadow-md' ref={menuRef}>
-                        <div className='flex flex-col items-center py-4'>
-                            <Link href='/' className={path === '/' ? 'underline underline-offset-4' : ''} onClick={toggleMenu}>Home</Link>
-                            <Link href='/work' className={path === '/work' ? 'underline underline-offset-4' : ''} onClick={toggleMenu}>Work</Link>
-                            <Link href='/projects' className={path === '/projects' ? 'underline underline-offset-4' : ''} onClick={toggleMenu}>Projects</Link> 
-                            <Link href='/contact' className={path === '/contact' ? 'underline underline-offset-4' : ''} onClick={toggleMenu}>Contact</Link>
-                            <button onClick={toggleDarkMode} className='mb-2'>
+            <div className='flex flex-row items-center gap-3'>
+                <div className='relative' ref={ref}>
+                    <button onClick={toggleMenu}>
+                        <HamburgerMenuIcon width={20} height={20} aria-label='Page Options.'/>
+                    </button>
+                    {
+                        isOpen && (
+                            <div className='absolute w-[150px] flex flex-col right-0 mt-2 bg-background shadow-lg border rounded-md text-sm py-2'>
                                 {
-                                    isDarkMode ? (
-                                        <div className='flex flex-row'>
-                                            <SunIcon width={20} height={20} />
-                                            { 'Light Mode' }
+                                    options.map((option, i) => (
+                                        <div key={i} className='flex flex-col'>
+                                            <Link href={option.path} onClick={toggleMenu}>
+                                                <div className={`px-4 py-2 ${option.path === path ? 'underline underline-offset-2' : ''}`}>
+                                                    {option.title}
+                                                </div>
+                                            </Link>
+                                            <hr className='border-t my-2' />
                                         </div>
-                                    ) : (
-                                        <div className='flex flex-row'>
-                                            <MoonIcon width={20} height={20} />
-                                            { 'Dark Mode' }
-                                        </div>
-                                    )
+                                    ))
                                 }
-                            </button>
-                        </div>
-                    </div>
-                )
-            }
+                                <div className='flex items-center justify-between px-4 py-2'>
+                                    <span>Dark Mode</span>
+                                    <label className='relative inline-flex items-center cursor-pointer'>
+                                        <input type='checkbox' className='sr-only peer' checked={isDarkMode} onChange={toggleDarkMode} />
+                                        <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-800"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
         </div>
     );
 };
