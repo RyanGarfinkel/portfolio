@@ -12,13 +12,13 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
     const path = usePathname();
 
     return (
-        <div className='sm:hidden md:flex flex-row justify-between items-center w-full mx-auto sm:my-6 md:my-8 font-mono'>
-            <div className='font-semibold sm:text-[22px] md:text-[26px]'>
+        <div className='sm:hidden md:flex flex-row justify-between items-center w-full mx-auto my-8 font-mono'>
+            <div className='font-semibold text-[26px]'>
                 { '<RG/>'}
             </div>
-            <div className='flex flex-row items-center gap-3 sm:text-[15px] lg:text-[16px]'>
+            <div className='flex flex-row items-center gap-3 text-[16px]'>
                 <button onClick={toggleDarkMode}>
-                    { isDarkMode ? ( <SunIcon/> ) : ( <MoonIcon/> ) }
+                    { isDarkMode ? ( <SunIcon aria-label='Switch to light mode.'/> ) : ( <MoonIcon aria-label='Switch to dark mode.'/> ) }
                 </button>
                 <div>|</div>
                 <Link href='/' className={path === '/' ? 'underline underline-offset-4' : ''}>Home</Link>
