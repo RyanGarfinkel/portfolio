@@ -41,13 +41,13 @@ const MobileNavbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => 
                     {
                         isOpen && (
                             <div className='absolute w-[150px] flex flex-col right-0 mt-2 bg-background shadow-lg border rounded-md text-sm py-2'>
-                                <Link href='/' className={path === '/' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'}>Home</Link>
+                                <Link href='/' className={path === '/' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Home</Link>
                                 <hr className='border-t my-2' />
-                                <Link href='/work' className={path === '/work' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'}>Work</Link>
+                                <Link href='/work' className={path === '/work' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Work</Link>
                                 <hr className='border-t my-2' />
-                                <Link href='/projects' className={path === '/projects' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'}>Projects</Link> 
+                                <Link href='/projects' className={path === '/projects' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Projects</Link> 
                                 <hr className='border-t my-2' />
-                                <Link href='/contact' className={path === '/contact' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'}>Contact</Link>
+                                <Link href='/contact' className={path === '/contact' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Contact</Link>
                                 <hr className='border-t my-2' />
                                 <div className='flex items-center justify-between px-4 py-2'>
                                     <span>Dark Mode</span>
