@@ -19,7 +19,7 @@ const projectData: Project[] = [
         p1: 'Overcharged is a game designed to promote energy sustainability. In this fast-paced game, players dash around their home, turning off the electronics to avoid a costly electricity bill. Players can also view a leaderboard to track top scores. Overcharged was developed in just 36 hours during the Knight Hacks VII hackathon at UCF. I\’m incredibly proud of the work my team and I put into this project, and we were thrilled to place 3rd in the Next Era: Energy Sustainability Challenge!',
         p2: 'Though I had limited prior experience with Unity, I embraced the learning curve, picking up essential skills like creating game objects, designing scenes, and incorporating assets. With my background in backend development, I wrote scripts to connect and communicate with our MongoDB database, which I used to make the login, signup, and leaderboard pages. I learned a lot from my teammates who had more Unity experience, making it a rewarding and educational experience.',
         techStack: ['Unity', 'C#', 'MongoDB'],
-        imgUrl: ['./assets/overcharged1.png', './assets/overcharged2.png', './assets/overcharged3.png', './assets/overcharged4.png'],
+        imgUrl: ['/assets/overcharged1.png', '/assets/overcharged2.png', '/assets/overcharged3.png', '/assets/overcharged4.png'],
         gitHub: 'https://github.com/KnightHacksOvercharged/Overcharged',
         devpost: 'https://devpost.com/software/overcharged',
     },
@@ -31,7 +31,7 @@ const projectData: Project[] = [
         p1: 'CoHab is a web and mobile app designed to streamline communication for roommates, featuring a calendar, group chat, real-time location sharing, task list, and a dashboard for recent messages, tasks, and events. Cohab was developed during my Spring 2024 Processes for Object-Oriented Software Development class and was hosted on Heroku.',
         p2: 'As one of the backend developers, I created endpoints to perform CRUD operations on users and roommate groups, implemented JSON Web Tokens (JWTs) to authenticate user requests, configured Socket.io for real time communication, and set up Nodemailer to send verification codes to users. This was my first experience working with these libraries, broadening my understanding of backend capabilities I can incorporate in future projects.',
         techStack: ['Node.js', 'Express.js', 'Socket.io', 'MongoDB'],
-        imgUrl: ['./assets/cohab1.gif', './assets/cohab2.mp4'],
+        imgUrl: ['/assets/cohab1.gif', '/assets/cohab2.mp4'],
         gitHub: 'https://github.com/PG-002/CoHab',
     },
     {
@@ -42,7 +42,7 @@ const projectData: Project[] = [
         p1: 'This contact manager was developed during my Spring 2024 Processes for Object-Oriented Software Development class. It allows users to store contact details, including names, emails, phone numbers, emojis, addresses, ages, birthdays, and was hosted on Digital Ocean.',
         p2: 'As one of the backend developers, I created API endpoints to perform CRUD operations on users and their contacts, working closely with the frontend and database teams to ensure smooth communication across components.',
         techStack: ['PHP', 'MySQL'],
-        imgUrl: ['./assets/contact-manager.png'],
+        imgUrl: ['/assets/contact-manager.png'],
         gitHub: 'https://github.com/happysnail2357/Contact-Manager-Website',
     },
     {
@@ -53,7 +53,7 @@ const projectData: Project[] = [
         p1: 'My personal website highlights my skills and experiences by detailing my work history and showcasing my projects.  I focused on creating a user-friendly layout for easy navigation. Built with Next.js and styled with TailwindCSS, the site is responsive and performs seamlessly across devices. Hosted on Vercel, it also integrates libraries including Radix icons, React-Toastify, React-Player, and Nodemailer to enhance UI and functionality.',
         p2: 'PS – You’re on the website right now!',
         techStack: ['Next.js', 'Tailwind CSS', 'Vercel'],
-        imgUrl: ['./assets/portfolio1.png'],
+        imgUrl: ['/assets/portfolio1.png'],
         gitHub: 'https://github.com/RyanGarfinkel/portfolio',
     },
 ];

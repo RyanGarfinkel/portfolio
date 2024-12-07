@@ -1,15 +1,26 @@
-import { Project } from '../../public/projectData';
+import projectData, { Project } from '../../../public/projectData';
 import { useRouter } from 'next/router';
 import { ArrowTopRightIcon, ChevronLeftIcon } from '@radix-ui/react-icons';
-import Carousel from './carousel';
+import Carousel from '../../components/carousel';
+import { useEffect, useState } from 'react';
 
-interface ProjectDisplayProps {
-    project: Project;
-}
-
-const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ project }) => {
+const ProjectDisplay = () => {
 
     const router = useRouter();
+    const query = router.query;
+
+    const [project, setProject] = useState<Project>();
+
+    useEffect(() => {
+        const p = projectData.find(p => p.title.toLowerCase().replace(' ', '-') === query.id);
+        if(!p)
+            router.push('/404');
+        else
+            setProject(p);
+    }, [router, query.id]);
+
+    if(!project)
+        return <div>Loading...</div>;
 
     const handleBackToProjects = () => router.push('/projects');
 
