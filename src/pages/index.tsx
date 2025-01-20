@@ -2,7 +2,7 @@ import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 
 const linkedin = 'https://www.linkedin.com/in/ryan-garfinkel/';
 const github = 'https://github.com/RyanGarfinkel';
-const resume = '/resume.pdf';
+const resume = '/resume';
 const ucf = 'https://www.ucf.edu/';
 const devpost = 'https://devpost.com/software/overcharged';
 
