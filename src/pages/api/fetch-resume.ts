@@ -11,6 +11,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const response = await list();
 
+    console.log(response);
+
     if(response.blobs.length !== 1)
         return res.status(500).json({ message: 'Error fetching resume.' });
 
