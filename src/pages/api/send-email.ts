@@ -32,15 +32,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         text: `From: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${message}`,
     };
 
-    try 
-    {
-        await transporter.sendMail(mailOptions);
-        return res.status(204).end(); 
-    } catch(err)
-    {
-        console.log(err)
-        res.status(500).send(err);
-    }
+    transporter.sendMail(mailOptions)
+        .then(() => res.status(204).end())
+        .catch(err => res.status(500).send(err));
 };
 
 export default handler;
