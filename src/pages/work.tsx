@@ -4,9 +4,6 @@ const WorkPage = () => {
 
     return (
         <div>
-            <div className='font-semibold sm:text-[22px] md:text-[26px]'>
-                Work Experience
-            </div>
             <div className='mt-2 mb-5'>
                 My work experience has made me a stronger communicator and software developer. I&apos;m grateful for the opportunities I&apos;ve had to learn
                 new technologies and actively engage in the software development life cycle. 

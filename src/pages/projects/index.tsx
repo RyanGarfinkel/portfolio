@@ -5,9 +5,6 @@ const Projects = () => {
 
     return (
         <div className='flex flex-col'>
-            <div className='font-semibold sm:text-[22px] md:text-[26px]'>
-                Projects
-            </div>
             <div className='my-2'>
                 The projects I have worked on have given me the opportunity to learn new technologies and actively engage in the software development life cycle.
                 During the development of these projects, I have learned how to work with a team, manage my time, and communicate effectively. Click on a project

@@ -1,6 +1,5 @@
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 interface NavbarProps {
     isDarkMode: boolean;
@@ -8,8 +7,6 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
-
-    const path = usePathname();
 
     return (
         <div className='sm:hidden md:flex flex-row justify-between items-center w-full mx-auto my-8 font-mono'>
@@ -21,10 +18,10 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
                     { isDarkMode ? ( <SunIcon aria-label='Switch to light mode.'/> ) : ( <MoonIcon aria-label='Switch to dark mode.'/> ) }
                 </button>
                 <div>|</div>
-                <Link href='/' className={path === '/' ? 'underline underline-offset-4' : ''}>Home</Link>
-                <Link href='/work' className={path === '/work' ? 'underline underline-offset-4' : ''}>Work</Link>
-                <Link href='/projects' className={path === '/projects' ? 'underline underline-offset-4' : ''}>Projects</Link> 
-                <Link href='/contact' className={path === '/contact' ? 'underline underline-offset-4' : ''}>Contact</Link>
+                <Link href='/' className='hover:underline hover:underline-offset-4'>Home</Link>
+                <Link href='/work' className='hover:underline hover:underline-offset-4'>Work</Link>
+                <Link href='/projects' className='hover:underline hover:underline-offset-4'>Projects</Link> 
+                <Link href='/contact' className='hover:underline hover:underline-offset-4'>Contact</Link>
             </div>
         </div>
     );

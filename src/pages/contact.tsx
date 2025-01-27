@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 interface CloseButtonProps {
     closeToast: (e: React.MouseEvent<HTMLElement>) => void;
-}
+};
 
 const CloseButton: React.FC<CloseButtonProps> = ({ closeToast }) => (
 
@@ -28,7 +28,20 @@ const options: ToastOptions<unknown> = {
         color: 'var(--foreground)',
         fontFamily: 'var(--font-mono)',
     },
-}
+};
+
+const label = (fieldName: string) => (
+    <label className='block mb-1 font-semibold'>
+        { fieldName }
+        <span className='ml-1 text-red-500'>
+            *
+        </span>
+    </label>
+);
+
+const error = (error: string | null) => (
+    error && <div className='text-red-500 text-sm mt-1'>{error}</div>
+);
 
 const Contact = () => {
 
@@ -140,30 +153,25 @@ const Contact = () => {
             subject: '',
             message: ''
         });
-    }
+    };
 
     return (
-        <form>
-            <div className='font-semibold sm:text-[22px] md:text-[26px] mb-5'>
-                Contact
-            </div>
+        <form className='mt-5'>
             <div>
                 <div className='mb-4'>
                 <div className='flex gap-4'>
                     <div className='w-1/2'>
-                        <label className='block mb-2'>First Name *</label>
+                        { label('First Name') }
                         <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.firstName ? 'border-red-500' : ''}`}
                             placeholder='Ryan'
                             value={values.firstName}
                             onChange={(e) => handleChange('firstName', e.target.value)}
                             onKeyDown={(e) => handleKeyDown('firstName', e, lastNameRef)}
                         />
-                        {
-                            errors.firstName && <div className='text-red-500 text-sm mt-1'>{errors.firstName}</div>
-                        }
+                        { error(errors.firstName) }
                     </div>
                     <div className='w-1/2'>
-                        <label className='block mb-2'>Last Name *</label>
+                        { label('Last Name') }
                         <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.lastName ? 'border-red-500' : ''}`}
                             placeholder='Garfinkel'
                             value={values.lastName}
@@ -171,14 +179,12 @@ const Contact = () => {
                             ref={lastNameRef}
                             onKeyDown={(e) => handleKeyDown('lastName', e, emailRef)}
                         />
-                        {
-                            errors.lastName && <div className='text-red-500 text-sm mt-1'>{errors.lastName}</div>
-                        }
+                        { error(errors.lastName) }
                     </div>
                 </div>
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Email *</label>
+                    { label('Email') }
                     <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.email ? 'border-red-500' : ''}`}
                         placeholder='name@example.com'
                         value={values.email}
@@ -186,12 +192,10 @@ const Contact = () => {
                         onChange={(e) => handleChange('email', e.target.value)}
                         onKeyDown={(e) => handleKeyDown('email', e, subjectRef)}
                     />
-                    {
-                        errors.email && <div className='text-red-500 text-sm mt-1'>{errors.email}</div>
-                    }
+                    { error(errors.email) }
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Subject *</label>
+                    { label('Subject') }
                     <input className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.subject ? 'border-red-500' : ''}`}
                         placeholder='Inquiry'
                         ref={subjectRef}
@@ -199,29 +203,25 @@ const Contact = () => {
                         onChange={(e) => handleChange('subject', e.target.value)}
                         onKeyDown={(e) => handleKeyDown('subject', e, messageRef)}
                     />
-                    {
-                        errors.subject && <div className='text-red-500 text-sm mt-1'>{errors.subject}</div>
-                    }
+                    { error(errors.subject) }
                 </div>
                 <div className='mb-4'>
-                    <label className='block mb-2'>Message *</label>
+                    { label('Message') }
                     <textarea className={`w-full px-3 py-2 border rounded-lg bg-transparent focus:outline-none ${errors.message ? 'border-red-500' : ''} min-h-[100px] max-h-[250px]`}
                             placeholder='Your message...'
                             ref={messageRef}
                             value={values.message}
                             onChange={(e) => handleChange('message', e.target.value)}
                     />
-                    {
-                        errors.message && <div className='text-red-500 text-sm mt-1'>{errors.message}</div>
-                    }
+                    { error(errors.message) }
                 </div>
-                <button className="w-full py-2 px-4 bg-blue-700 text-white rounded-lg hover:bg-blue-800 transition-all duration-300" onClick={handleSubmit}>
+                <button className="w-full py-2 px-4 bg-blue-700 font-semibold text-white rounded-lg hover:bg-blue-800 transition-all duration-300" onClick={handleSubmit}>
                     Submit
                 </button>
             </div>
             <ToastContainer limit={1}/>
         </form>
-  );
+    );
 };
 
 export default Contact;
