@@ -1,13 +1,11 @@
+import { useTheme } from '@/utils/theme-context';
 import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 
-interface NavbarProps {
-    isDarkMode: boolean;
-    toggleDarkMode: () => void;
-}
+const Navbar: React.FC = () => {
 
-const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
-
+    const { isDarkMode, toggleDarkMode } = useTheme();
+    
     return (
         <div className='sm:hidden md:flex flex-row justify-between items-center w-full mx-auto my-8 font-mono'>
             <div className='font-semibold text-[26px]'>

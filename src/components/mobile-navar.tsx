@@ -1,15 +1,13 @@
+import { useTheme } from '@/utils/theme-context';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-interface NavbarProps {
-    isDarkMode: boolean;
-    toggleDarkMode: () => void;
-}
+const MobileNavbar: React.FC = () => {
 
-const MobileNavbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
-
+    const { isDarkMode, toggleDarkMode } = useTheme();
+    
     const path = usePathname();
 
     const [isOpen, setIsOpen] = useState(false);
