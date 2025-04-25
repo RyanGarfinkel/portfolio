@@ -1,3 +1,5 @@
+'use client';
+
 import { useTheme } from '@/utils/theme-context';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
@@ -44,6 +46,8 @@ const MobileNavbar: React.FC = () => {
                                 <Link href='/work' className={path === '/work' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Work</Link>
                                 <hr className='border-t my-2' />
                                 <Link href='/projects' className={path === '/projects' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Projects</Link> 
+                                <hr className='border-t my-2' />
+                                <Link href='/resume' className={path === '/resume' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Resume</Link> 
                                 <hr className='border-t my-2' />
                                 <Link href='/contact' className={path === '/contact' ? 'px-4 py-2 underline underline-offset-4' : 'px-4 py-2'} onClick={() =>  setIsOpen(false)}>Contact</Link>
                                 <hr className='border-t my-2' />
