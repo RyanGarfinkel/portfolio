@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         <div id='about' className='flex sm:flex-col md:flex-row justify-between items-center'>
             <div className='flex flex-col flex-start sm:w-full md:w-2/3 sm:mb-8 md:mb-0'>
                 <div className='font-semibold sm:text-[21px] md:text-[56px]'>
-                    Hey, I&apos;m Ryan <span className="inline-block hover:animate-wave">👋</span>
+                    Hey, I&apos;m Ryan <span className="inline-block animate-wave">👋</span>
                 </div>
                 <div className='text-lg sm:text-[18px] md:text-[24px] mt-2'>
                     A computer science student at the University of Central Florida, passionate about building web apps and exploring new technologies. I love turning ideas into products and

@@ -6,10 +6,10 @@ const Education = () => {
             <div className='title mt-3'>
                 Education
             </div> 
-            <div className="flex flex-row items-start space-x-6 w-full">
+            <div className="flex sm:flex-col md:flex-row sm:items-center md:items-start space-x-6 w-full">
                 <Image src="/assets/images/ucf.png" alt="UCF Logo" width={55} height={55} className="rounded-full"/>
-                <div className='flex flex-col w-full text-lg sm:text-[18px] md:text-[20px]'>
-                    <div className='flex flex-row justify-between items-center w-full'>
+                <div className='col w-full text-lg sm:text-[18px] md:text-[20px]'>
+                    <div className='flex sm:flex-col md:flex-row justify-between items-center w-full'>
                         <div className="font-semibold">
                             University of Central Florida
                         </div>
@@ -17,7 +17,7 @@ const Education = () => {
                             Expected Graduation: May 2026
                         </div>
                     </div>
-                    <div className='flex flex-row justify-between items-center w-full'>
+                    <div className='flex sm:flex-col md:flex-row justify-between items-center w-full'>
                         <div className="italic">
                             Bachelor of Science in Computer Science
                         </div>

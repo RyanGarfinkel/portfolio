@@ -1,11 +1,13 @@
 'use client';
 
 import ArrowLink from '@/components/arrow-link';
-import Carousel from '@/components/projects/carousel';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
+import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
 import projects from '~/assets/data/projects';
+
+const Carousel = dynamic(() => import('@/components/projects/carousel'), { ssr: false });
 
 const getProject = (projectName: string) => {
 
