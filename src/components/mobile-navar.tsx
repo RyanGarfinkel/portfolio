@@ -1,3 +1,5 @@
+'use client';
+
 import { useTheme } from '@/utils/theme-context';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 import Link from 'next/link';
