@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 const Education = () => {
     return (
-        <div className='flex flex-col space-y-8 w-full'>
+        <div className='flex flex-col sm:items-center md:items-start space-y-8 w-full'>
             <div className='title mt-3'>
                 Education
             </div> 
             <div className="flex sm:flex-col md:flex-row sm:items-center md:items-start space-x-6 w-full">
                 <Image src="/assets/images/ucf.png" alt="UCF Logo" width={55} height={55} className="rounded-full"/>
-                <div className='col w-full text-lg sm:text-[18px] md:text-[20px]'>
+                <div className='col w-full text-lg sm:text-[18px] md:text-[20px] sm:gap-4 md:gap-0'>
                     <div className='flex sm:flex-col md:flex-row justify-between items-center w-full'>
                         <div className="font-semibold">
                             University of Central Florida
@@ -25,8 +25,7 @@ const Education = () => {
                             Orlando, FL
                         </div>
                     </div>
-
-                    <ul className="ml-5 list-disc w-2/3">
+                    <ul className="sm:w-full ml-5 list-disc md:w-2/3">
                         <li>
                             <span className="font-semibold">Coursework:</span> Software Engineering, Enterprise Computing, VR Engineering, Algorithms for Machine Learning, Object Oriented Programming, Systems Software, and Leadership in Engineering I, II.
                         </li>
