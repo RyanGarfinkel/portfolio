@@ -34,44 +34,46 @@ const ProjectDisplay: React.FC<ProjectDisplayProps> = ({ params }) => {
     const handleBack = () => window.location.href = '/projects';
 
     return (
-        <div className='sm:flex sm:flex-col-reverse md:row justify-between items-start w-full mt-8 space-x-[10%]'>
-            <div className='col w-[45%]'>
-                <div className='row items-center hover:underline hover:underline-offset-5'>
-                    <ChevronLeftIcon width={17} height={17}/>
-                    <button onClick={handleBack} className='mt-0.5'>
-                        Back
-                    </button>
-                </div>
-                <div className='title mt-6'>
-                    { project.title }
-                </div>
-                <div className=''>
-                    { 
-                        project.desc.map((desc, i) => (
-                            <div key={i} className='my-2 ml-1 text-lg sm:text-[18px] md:text-[20px]'>
-                                { desc }
-                            </div>
-                        ))
-                    }
-                </div>
-                <div className='row space-x-4'>
-                    <ArrowLink url={project.gitHub} txt='Github' />
-                    {
-                        project.devpost && <ArrowLink url={project.devpost} txt='Devpost' />
-                    }
-                </div>
-                <div className='row space-x-2'>
-                    {
-                        project.tags.map((tag, i) => (
-                            <div key={i} className='my-2 ml-1 text-lg sm:text-[18px] md:text-[20px]'>
-                                { `#${tag}` }
-                            </div>
-                        ))
-                    }
-                </div>  
+        <div className='flex flex-col w-full'>
+            <div className='row items-center hover:underline hover:underline-offset-5'>
+                <ChevronLeftIcon width={17} height={17}/>
+                <button onClick={handleBack} className='mt-0.5'>
+                    Back
+                </button>
             </div>
-            <div className='row items-center my-auto sm:w-full md:w-[45%]'>
-                <Carousel title={project.title} baseUrl={project.baseImgUrl} urls={project.imageUrls} />
+            <div className='sm:flex sm:flex-col-reverse md:flex-row justify-between items-start w-full mt-8 space-x-[10%]'>
+                <div className='flex flex-col sm:w-full md:w-[45%] justify-center'>
+                    <div className='title mt-6'>
+                        { project.title }
+                    </div>
+                    <div className=''>
+                        { 
+                            project.desc.map((desc, i) => (
+                                <div key={i} className='my-2 ml-1 text-lg sm:text-[18px] md:text-[20px]'>
+                                    { desc }
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className='row space-x-4'>
+                        <ArrowLink url={project.gitHub} txt='Github' />
+                        {
+                            project.devpost && <ArrowLink url={project.devpost} txt='Devpost' />
+                        }
+                    </div>
+                    <div className='row space-x-2'>
+                        {
+                            project.tags.map((tag, i) => (
+                                <div key={i} className='my-2 ml-1 text-lg sm:text-[18px] md:text-[20px]'>
+                                    { `#${tag}` }
+                                </div>
+                            ))
+                        }
+                    </div>  
+                </div>
+                <div className='flex flex-row items-center my-auto sm:w-full md:w-[45%]'>
+                    <Carousel title={project.title} baseUrl={project.baseImgUrl} urls={project.imageUrls} />
+                </div>
             </div>
         </div>
     );

@@ -31,7 +31,7 @@ const Carousel: React.FC<CarouselProps> = ({ title, baseUrl, urls }) => {
         return getDisplay(`${baseUrl}${urls[index]}`, title);
 
     return (
-        <div className='col justify-center items-center space-y-4'>
+        <div className='col justify-center items-center space-y-4 w-full'>
             <div className='w-full sm:h-48 md:h-[288px]'>
                 {
                     getDisplay(`${baseUrl}${urls[index]}`, title)
