@@ -240,7 +240,7 @@ const Contact = () => {
             <p className='mb-8 text-lg'>
                 Or contact me through...
             </p>
-            <div className='flex gap-8'>
+            <div className='flex sm:flex-col md:flex-row gap-8'>
                 <NavButton icon={<EnvelopeClosedIcon />} hoverIcon={<EnvelopeOpenIcon />} title='Email' href='mailto:ryan.garfinkel@gmail.com' />
                 <NavButton icon={<LinkedInLogoIcon className='text-[#0077b5]' />} title='LinkedIn' href='https://www.linkedin.com/in/ryan-garfinkel/' />
                 <NavButton icon={<GitHubLogoIcon />} title='GitHub' href='https://github.com/RyanGarfinkel' />
