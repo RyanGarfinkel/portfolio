@@ -1,0 +1,94 @@
+
+input, textarea {
+  background: transparent !important;
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+  color: var(--text-primary);
+  padding: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: var(--text-primary) !important;
+  caret-color: var(--text-primary) !important;
+  background-clip: padding-box !important;
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--glass-background) inset !important;
+  box-shadow: 0 0 0 1000px var(--glass-background) inset !important;
+  background-color: var(--glass-background) !important;
+}
+
+input:-webkit-autofill:hover,
+textarea:-webkit-autofill:hover {
+  -webkit-box-shadow: 0 0 0 1000px var(--glass-background) inset !important;
+  box-shadow: 0 0 0 1000px var(--glass-background) inset !important;
+  background-color: var(--glass-background) !important;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 2px var(--hover-background);
+  background: var(--glass-background);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input:invalid, textarea:invalid {
+  border-color: #ef4444;
+  background-image: none;
+}
+
+textarea::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success {
+  color: white;
+  background: var(--success-background);
+  border: 1px solid var(--success-border);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.failure {
+  color: white;
+  background: var(--failure-background);
+  border: 1px solid var(--failure-border);
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
