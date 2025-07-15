@@ -27,7 +27,15 @@ interface IconNavButton {
     icon: React.ReactNode;
     onClick: () => void;
     ariaLabel?: string;
-}
+};
+
+interface IconDescButton {
+    icon: React.ReactNode;
+    hoverIcon?: React.ReactNode;
+    title: string;
+    href: string;
+    description: string;
+};
 
 const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, type='primary' }) => {
 
@@ -86,6 +94,28 @@ const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) =>
     );
 }
 
+const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href, description }) => {
+
+    const [isHovered, setIsHovered] = useState(false);
+
+    return (
+        <Link 
+            href={href}
+            className='group container p-6 rounded-xl border border-card-foreground/10 transition-all duration-300'
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div className='flex items-center gap-4'>
+                { isHovered && hoverIcon ? hoverIcon : icon }
+                <div>
+                    <h3 className='font-semibold group-hover:text-primary transition-colors'>{ title }</h3>
+                    <p className='text-sm text-secondary'>{ description }</p>
+                </div>
+            </div>
+        </Link>
+    );
+};
 
 
-export { NavButton, BackButton, TextNavButton, IconNavButton };
+
+export { NavButton, BackButton, TextNavButton, IconNavButton, IconDescButton };
