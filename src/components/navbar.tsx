@@ -32,13 +32,13 @@ const Option: React.FC<OptionProps> = ({ icon, hoverIcon, title, description, hr
             href={href}
             target={openInNewTab ? '_blank' : '_self'}
             rel='noopener noreferrer'
-            className={`group flex items-center px-4 py-2 text-primary rounded-2xl bg-card-background hover:bg-card-hover ${displayOnMobile ? 'sm:flex md:hidden' : ''}`}
+            className={`group flex items-center px-4 py-2 text-primary rounded-2xl container-borderless ${displayOnMobile ? 'sm:flex md:hidden' : ''}`}
             onClick={toggleShowSpinner}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             <div className='mr-2'>
-                <div className='mr-4 bg-card-foreground rounded-2xl p-3'>
+                <div className='mr-4 container-foreground rounded-2xl p-3'>
                     { hoverIcon && isHovered ? hoverIcon : icon }
                 </div>
             </div>
@@ -58,7 +58,7 @@ const Option: React.FC<OptionProps> = ({ icon, hoverIcon, title, description, hr
 const MoreDropdown: React.FC<MoreDropdownProps> = ({ showSpinner, toggleShowSpinner }) => {
 
     return (
-        <div className='absolute left-1/2 transform -translate-x-1/2 mt-6 px-5 py-3 container rounded-2xl z-10 min-w-max w-auto'>
+        <div className='absolute left-1/2 transform -translate-x-1/2 mt-6 px-5 py-3 container-full rounded-2xl z-10 min-w-max w-auto'>
             <Option
                 icon={<PersonIcon className='w-7 h-7' />}
                 title='About Me'
@@ -163,7 +163,7 @@ const Navbar = () => {
                             showDropdown && <MoreDropdown showSpinner={showSpinner} toggleShowSpinner={() => setShowSpinner(true)} />
                         }
                     </div>
-                    <button onClick={toggleTheme} className='blank-container focus:p-2'>
+                    <button onClick={toggleTheme} className='p-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background'>
                         {
                             !mounted ? <MoonIcon /> : resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />
                         }

@@ -101,7 +101,7 @@ const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href
     return (
         <Link 
             href={href}
-            className='group container p-6 rounded-xl border border-card-foreground/10 transition-all duration-300'
+            className='group container p-6 rounded-xl border border-primary/10 transition-all duration-300'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
