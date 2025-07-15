@@ -13,7 +13,7 @@ const About = () => {
                     As an Undergraduate Learning Assistant, I&apos;ve had the privilege of mentoring over 250 students, which has strengthened my communication skills and deepened my understanding of complex concepts.
                 </p>
                 <div className='pt-4'>
-                    <NavButton href='/about' title="Learn More About Me" type="secondary" />
+                    <NavButton href='/about' title='Learn More About Me' type='secondary' />
                 </div>
             </div>
             <div className='space-y-6'>

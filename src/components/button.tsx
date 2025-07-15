@@ -87,7 +87,7 @@ const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) =>
         <button
             aria-label={ariaLabel}
             onClick={onClick}
-            className="p-3 rounded-full container shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 z-10 w-fit"
+            className='p-3 rounded-full container shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 z-10 w-fit'
         >
             { icon }
         </button>
