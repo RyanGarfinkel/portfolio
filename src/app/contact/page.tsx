@@ -107,7 +107,7 @@ const Contact = () => {
 
             e.target.reportValidity();
         }
-    }
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -145,7 +145,7 @@ const Contact = () => {
         setEmail('');
         setSubject('');
         setMessage('');
-    }
+    };
 
     return (
         <div className='flex flex-col'>

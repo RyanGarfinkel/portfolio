@@ -30,6 +30,6 @@ const iconUrls: Record<string, string> = {
     Postman: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg',
     Docker: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
     
-}
+};
 
 export default iconUrls;

@@ -79,7 +79,7 @@ const TextNavButton: React.FC<TextNavButtonProps> = ({ text, href, hideOnMobile 
         <Link href={href} className={`hover:underline focus:underline outline-none border-none shadow-none underline-offset-4 ${hideOnMobile ? 'hidden md:inline' : ''}`}>
             {text}
         </Link> 
-    )
+    );
 };
 
 const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) => {
@@ -92,7 +92,7 @@ const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) =>
             { icon }
         </button>
     );
-}
+};
 
 const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href, description }) => {
 

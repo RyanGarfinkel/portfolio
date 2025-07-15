@@ -1,6 +1,10 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
-    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }]
+    "quotes": ["error", "single", { "avoidEscape": true, "allowTemplateLiterals": true }],
+    "semi": ["error", "always"],
+    "no-unused-vars": ["error", { "args": "none", "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-explicit-any": "error",
+    "@next/next/no-img-element": "error"
   }
 }
