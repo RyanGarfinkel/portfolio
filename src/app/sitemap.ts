@@ -1,23 +1,23 @@
 import type { MetadataRoute } from 'next';
 import projects from '@/data/projects';
 
-const staticPages: MetadataRoute.Sitemap = [
-    { url: '/', lastModified: new Date() },
-    { url: '/about', lastModified: new Date() },
-    { url: '/projects', lastModified: new Date() },
-    { url: '/work', lastModified: new Date() },
-    { url: '/contact', lastModified: new Date() },
-    { url: '/resume', lastModified: new Date() },
-];
+export default function sitemap(): MetadataRoute.Sitemap {
+    const staticPages: MetadataRoute.Sitemap = [
+        { url: 'https://www.ryangarfinkel.dev/', lastModified: new Date() },
+        { url: 'https://www.ryangarfinkel.dev/about', lastModified: new Date() },
+        { url: 'https://www.ryangarfinkel.dev/projects', lastModified: new Date() },
+        { url: 'https://www.ryangarfinkel.dev/work', lastModified: new Date() },
+        { url: 'https://www.ryangarfinkel.dev/contact', lastModified: new Date() },
+        { url: 'https://www.ryangarfinkel.dev/resume', lastModified: new Date() },
+    ];
 
-const projectPages = projects.map(project => ({
-    url: `/projects/${project.id}`,
-    lastModified: new Date(),
-}));
+    const projectPages = projects.map(project => ({
+        url: `https://www.ryangarfinkel.dev/projects/${project.id}`,
+        lastModified: new Date(),
+    }));
 
-const sitemap: MetadataRoute.Sitemap = [
-    ...staticPages,
-    ...projectPages,
-];
-
-export default sitemap;
+    return [
+        ...staticPages,
+        ...projectPages,
+    ];
+}
