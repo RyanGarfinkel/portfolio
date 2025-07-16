@@ -139,7 +139,7 @@ const Navbar = () => {
 
     return (
         <div className='fixed top-16 left-0 w-full flex justify-center z-50'>
-            <div className='sm:w-[375px] md:w-[650px] text-center container text-lg text-primary rounded-full shadow-lg px-6 py-4'>
+            <div className='sm:w-fit text-center container text-lg text-primary rounded-full shadow-lg px-6 py-3'>
                 <div className='flex justify-evenly items-center sm:gap-4 md:gap-6'>
                     <TextNavButton text='Home' href='/' />
                     <TextNavButton text='About' href='/about' hideOnMobile />

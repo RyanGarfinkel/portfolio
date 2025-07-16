@@ -10,6 +10,7 @@ interface NavButtonProps {
     hoverIcon?: React.ReactNode;
     title: string;
     href: string;
+    openInSelf?: boolean;
     type?: 'primary' | 'secondary';
 };
 
@@ -37,7 +38,7 @@ interface IconDescButton {
     description: string;
 };
 
-const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, type='primary' }) => {
+const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, openInSelf, type='primary' }) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const buttonStyles = type === 'secondary' ? 'bg-foreground text-background border border-transparent' : 'container';
@@ -45,7 +46,7 @@ const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, typ
     return (
         <Link
             href={href}
-            target='_blank'
+            target={openInSelf ? '_self' : '_blank'}
             rel='noopener noreferrer'
             className={`link flex items-center gap-2 p-3 rounded-lg group w-fit ${buttonStyles}`}
             onMouseEnter={() => setIsHovered(true)}
