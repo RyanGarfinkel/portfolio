@@ -1,1 +1,0 @@
-This portfolio is made with Next.js and TailwindCSS, and hosted by GitHub Pages!
