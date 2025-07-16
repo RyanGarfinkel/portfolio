@@ -8,20 +8,14 @@ const config: Config = {
     './src/data/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   safelist: [
+    // Gradient classes for projects
     'from-green-400', 'to-blue-500',
     'from-yellow-400', 'to-orange-500', 
     'from-blue-400', 'to-purple-500',
     'from-purple-400', 'to-pink-500',
     'from-indigo-400', 'to-cyan-500',
-    'bg-gradient-to-r',
-    'container',
-    'text-primary',
-    'text-secondary',
-    'hover:text-primary',
-    'group-hover:text-primary',
-    'bg-background',
-    'text-foreground',
-    'border-primary',
+    // Ensure bg-gradient-to-r is included
+    'bg-gradient-to-r'
   ],
   theme: {
     extend: {
