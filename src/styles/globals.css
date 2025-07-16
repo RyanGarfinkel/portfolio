@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f9f9f9;
+  --foreground: #1a1a1a;
+  --hover-background: rgba(26, 26, 26, 0.1);
+  --hover-foreground: rgba(249, 249, 249, 0.8);
+  --container-background: #ffffff;
+  --container-foreground: 44, 44, 44;
+  --text-primary: var(--foreground);
+  --text-secondary: #555555;
+  --container-border: rgba(44, 44, 44, 0.22);
+
+  --success-background: rgba(4, 120, 87, 0.88);
+  --success-border: #047857;
+  --failure-background: rgba(239, 68, 68, 0.88);
+  --failure-border: #ef4444;
+}
+
+[data-theme='dark'] {
+  --background: #121212;
+  --foreground: #e6e6e6;
+  --hover-background: rgba(230, 230, 230, 0.12);
+  --hover-foreground: rgba(18, 18, 18, 0.85);
+  --container-background: #1e1e1e;
+  --container-foreground: 209, 209, 209;
+  --text-primary: var(--foreground);
+  --text-secondary: #aaaaaa;
+  --container-border: rgba(209, 209, 209, 0.22);
+
+  --success-background: rgba(4, 120, 87, 0.22);
+  --failure-background: rgba(239, 68, 68, 0.22);
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Menlo, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  letter-spacing: 0.01em;
+}
+
+svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.container {
+  backdrop-filter: blur(12px) saturate(180%);
+  background: var(--container-background);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--container-border);
+}
+
+.container-full {
+  background: var(--container-background);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--container-border);
+}
+
+.container-borderless {
+  background: var(--container-background);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.container-borderless:hover {
+  background: var(--hover-background);
+}
+
+.container-foreground {
+  background: rgba(var(--container-foreground), 0.25);
+}
+
+:not(div):not(form).container:hover {
+  background: var(--hover-background);
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:focus, .link:focus, .dropdown:focus {
+  outline: none;
+  border-color: var(--foreground);
+  box-shadow: 0 0 0 2px var(--hover-background);
+  background: var(--container-background);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+@layer utilities {
+  .text-primary {
+    color: var(--text-primary);
+  }
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+  .border-primary {
+    border-color: var(--text-primary);
+  }
+  .bg-primary {
+    background: var(--text-primary);
+  }
+
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .container-hover:hover {
+    background: var(--hover-background);
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+}
