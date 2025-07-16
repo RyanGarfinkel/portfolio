@@ -1,17 +1,5 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-
-dotenv.config();
-
-const transporter = nodemailer.createTransport({
-    service: process.env.SERVICE,
-    secure: true,
-    auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASS,
-    },
-});
 
 const isValidEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -32,6 +20,15 @@ export async function POST(request: Request)
         return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 });
     else if(message.replace(/\s/g, '').length > 1000)
         return NextResponse.json({ error: 'Message too long.' }, { status: 400 });
+
+    const transporter = nodemailer.createTransport({
+        service: process.env.SERVICE,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASS,
+        },
+    });
 
     const mailOptions = {
         from: process.env.EMAIL,

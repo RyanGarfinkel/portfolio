@@ -1,15 +1,13 @@
-module.exports = {
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const nextJest = require('next/jest.js');
+ 
+const createJestConfig = nextJest({
+  dir: './',
+});
+ 
+const config = {
+  coverageProvider: 'v8',
   testEnvironment: 'node',
-  preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  testMatch: ['**/__tests__/**/*.(ts|tsx|js)'],
-  setupFiles: ['<rootDir>/jest.setup.js'],
-  collectCoverageFrom: [
-    'src/app/api/**/*.{ts,tsx}',
-    '!src/app/api/**/*.d.ts',
-  ],
-  coverageReporters: ['text', 'text-summary'],
 };
+
+module.exports = createJestConfig(config);
