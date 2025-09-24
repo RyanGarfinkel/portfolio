@@ -1,6 +1,11 @@
+'use client';
+
+import { useState } from 'react';
 import { NavButton } from '../button';
+import CourseHistoryPopup from '../course-history-popup';
 
 const About = () => {
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
 
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
@@ -31,8 +36,14 @@ const About = () => {
                         <div>
                             <h4 className='font-medium mb-2'>Relevant Coursework</h4>
                             <p className='text-secondary ml-2'>
-                                Machine Learning, Software Engineering, Processes for Object-Oriented Software Development, Programming Languages, Enterprise Computing, Systems Software, Virtual Reality Engineering
+                                Machine Learning, Software Engineering, Processes for Object-Oriented Software Development, Programming Languages
                             </p>
+                            <button
+                                onClick={() => setIsPopupOpen(true)}
+                                className='text-primary hover:underline text-sm mt-2 ml-2 underline-offset-4'
+                            >
+                                View Academic Audit Log
+                            </button>
                         </div>
                         <div>
                             <h4 className='font-medium mb-2'>Awards & Recognition</h4>
@@ -45,6 +56,11 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            
+            <CourseHistoryPopup 
+                isOpen={isPopupOpen} 
+                onClose={() => setIsPopupOpen(false)} 
+            />
         </div>
     );
 };

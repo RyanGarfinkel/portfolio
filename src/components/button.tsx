@@ -117,6 +117,4 @@ const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href
     );
 };
 
-
-
 export { NavButton, BackButton, TextNavButton, IconNavButton, IconDescButton };
