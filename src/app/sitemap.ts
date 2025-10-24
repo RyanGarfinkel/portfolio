@@ -21,3 +21,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...projectPages,
     ];
 }
+
+export const dynamicSitemap = true;
