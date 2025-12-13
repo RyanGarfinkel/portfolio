@@ -7,7 +7,7 @@ interface JobCardProps {
 const JobCard: React.FC<JobCardProps> = ({ job }) => {
 
     return (
-        <div className='container flex flex-col p-8 text-lg' tabIndex={0}>
+        <div className='container flex flex-col p-8 text-lg'>
             <span className='text-xl'>
                 <span className='font-semibold'>{ job.title } </span>
                 <span className='text-secondary'>@ { job.company }</span>

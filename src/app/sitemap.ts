@@ -1,6 +1,8 @@
 import type { MetadataRoute } from 'next';
 import projects from '@/data/projects';
 
+export const dynamic = 'force-dynamic';
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticPages: MetadataRoute.Sitemap = [
         { url: 'https://www.ryangarfinkel.dev/', lastModified: new Date() },
