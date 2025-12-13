@@ -133,3 +133,114 @@
 .project-card-link:hover .project-card-title {
     color: var(--text-primary);
 }
+
+/* Course History Popup */
+.course-history-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 1rem;
+    animation: fadeIn 200ms ease-out;
+}
+
+.course-history-dialog {
+    border-radius: 1rem;
+    max-width: 64rem; /* max-w-5xl */
+    width: 100%;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideInBottom 300ms ease-out;
+    background-color: var(--container-background);
+    color: var(--foreground);
+}
+
+.course-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.course-history-content {
+    overflow-y: auto;
+    max-height: calc(85vh - 100px);
+    padding: 1.5rem;
+    outline: none;
+}
+
+.course-history-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .course-history-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.semester-card {
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
+    transition: all 200ms;
+}
+
+.semester-card:hover {
+    border-color: color-mix(in srgb, var(--foreground) 20%, transparent);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.semester-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--foreground) 5%, transparent);
+}
+
+.course-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 150ms;
+}
+
+.course-item:hover {
+    background-color: color-mix(in srgb, var(--text-secondary) 5%, transparent);
+}
+
+.course-code {
+    font-size: 0.75rem;
+    font-family: monospace;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--foreground) 70%, transparent);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    background-color: color-mix(in srgb, var(--text-secondary) 10%, transparent);
+    min-width: 80px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInBottom {
+    from { transform: translateY(1rem); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

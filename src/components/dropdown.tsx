@@ -141,7 +141,7 @@ const Dropdown: React.FC<DropdownProps> = ({ onClose, shouldFocus }) => {
             <Option
                 Icon={LinkedInLogoIcon}
                 title='My LinkedIn Profile'
-                description="Connect with me."
+                description='Connect with me.'
                 href='https://www.linkedin.com/in/ryan-garfinkel/'
                 onKeyDown={(e) => handleKeyDown(e, 2)}
                 ref={el => { itemsRef.current[2] = el; }}

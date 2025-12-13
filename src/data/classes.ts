@@ -11,6 +11,24 @@ interface Semester {
 
 const courseHistory: Semester[] = [
     {
+        semester: 'Spring 2026',
+        courses: [
+            {
+                prefix: 'COP 4935',
+                name: 'Senior Design II',
+            },
+            {
+                prefix: 'ISC 4242',
+                name: 'Data Science II',
+            },
+            {
+                prefix: 'COP 4970H',
+                name: 'Honors Thesis I',
+            },
+        ],
+        isCurrent: true,
+    },
+    {
         semester: 'Fall 2025',
         courses: [
             {
@@ -38,7 +56,6 @@ const courseHistory: Semester[] = [
                 name: 'Engineering Leadership I',
             },
         ],
-        isCurrent: true,
     },
     {
         semester: 'Summer 2025',

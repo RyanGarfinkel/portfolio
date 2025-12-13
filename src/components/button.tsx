@@ -83,9 +83,10 @@ const TextNavButton: React.FC<TextNavButtonProps> = ({ text, href, hideOnMobile 
     );
 };
 
-const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) => {
+const IconNavButton = React.forwardRef<HTMLButtonElement, IconNavButton>(({ icon, onClick, ariaLabel }, ref) => {
     return (
         <button
+            ref={ref}
             aria-label={ariaLabel}
             onClick={onClick}
             className='p-3 rounded-full container shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 z-10 w-fit'
@@ -93,7 +94,8 @@ const IconNavButton: React.FC<IconNavButton> = ({ icon, onClick, ariaLabel }) =>
             { icon }
         </button>
     );
-};
+});
+IconNavButton.displayName = 'IconNavButton';
 
 const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href, description }) => {
 
