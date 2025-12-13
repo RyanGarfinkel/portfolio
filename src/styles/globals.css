@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root { /* Light mode */
   --background: #f9f9f9;
   --foreground: #1a1a1a;
   --hover-background: rgba(26, 26, 26, 0.1);

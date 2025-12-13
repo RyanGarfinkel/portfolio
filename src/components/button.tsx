@@ -12,6 +12,7 @@ interface NavButtonProps {
     href: string;
     openInSelf?: boolean;
     type?: 'primary' | 'secondary';
+    className?: string;
 };
 
 interface BackButtonProps {
@@ -37,8 +38,7 @@ interface IconDescButton {
     href: string;
     description: string;
 };
-
-const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, openInSelf, type='primary' }) => {
+const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, openInSelf, type='primary', className='' }) => {
 
     const [isHovered, setIsHovered] = useState(false);
     const buttonStyles = type === 'secondary' ? 'bg-foreground text-background border border-transparent' : 'container';
@@ -48,7 +48,7 @@ const NavButton: React.FC<NavButtonProps> = ({ icon, hoverIcon, title, href, ope
             href={href}
             target={openInSelf ? '_self' : '_blank'}
             rel='noopener noreferrer'
-            className={`link flex items-center gap-2 p-3 rounded-lg group w-fit ${buttonStyles}`}
+            className={`link flex items-center gap-2 p-3 rounded-lg group w-fit ${buttonStyles} ${className}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -66,7 +66,7 @@ const BackButton: React.FC<BackButtonProps> = ({ href }) => {
     return (
         <Link
             href={href}
-        className='inline-flex items-center gap-2 mb-8 p-3 rounded-full container group transition-all duration-300 w-fit '
+        className='link inline-flex items-center gap-2 mb-8 p-3 rounded-full container group transition-all duration-300 w-fit'
         >
             <ArrowLeftIcon className='w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1' />
             <span className='font-medium'>Back to Projects</span>

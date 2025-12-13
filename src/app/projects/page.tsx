@@ -1,97 +1,75 @@
 import projects, { Project } from '@/data/projects';
-import { GitHubLogoIcon, Pencil2Icon, Link2Icon } from '@radix-ui/react-icons';
 import Image from 'next/image';
-import { NavButton } from '@/components/button';
+import Link from 'next/link';
+import '@/styles/components.css';
+import TechStack from '@/components/tech-stack';
 
 interface ProjectCardProps {
     project: Project;
 };
 
-const Card: React.FC<ProjectCardProps> = ({ project }) => {
-
-    const symbol = (
-        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-gradient-to-r ${project.gradientFrom} ${project.gradientTo}`} style={{ aspectRatio: '1 / 1' }}>
-            <span className='text-2xl font-semibold'>{project.symbol}</span>
-        </div>
-    );
-
+const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <div className='flex flex-col container p-8 rounding-3xl'>
-            <div className='flex items-center gap-4 mb-6'>
-                { symbol }
-                <span className='text-2xl font-bold'>
-                    { project.title }
-                </span>
-            </div>
-            <p className='text-lg text-secondary leading-relaxed mb-4'>
-                { project.oneLiner }
-            </p>
-            <Image
-                src={`${project.baseImgUrl}${project.imageUrls[0]}`}
-                width={600}
-                height={400}
-                alt={project.title}
-                className='w-full h-full object-cover rounded-3xl'
-            />
-            <div className='flex gap-3 mt-4'>
-                {
-                    project.tags.map((tag, index) => (
-                        <span key={index} className='px-3 py-1 text-sm font-medium rounded-full border border-primary/20 text-primary'>
-                            { tag }
-                        </span>
-                    ))
-                }
-            </div>
-            <div className='flex gap-3 mt-6'>
-                <NavButton
-                    title='View Details'
-                    href={`/projects/${project.id}`}
-                    openInSelf
-                />
-                {
-                    project.liveDemo ? (
-                        <NavButton
-                            icon={<Link2Icon />}
-                            title='Live Demo'
-                            href={project.liveDemo}
-                            type='secondary'
+        <Link href={`/projects/${project.id}`} className='project-card-link'>
+            <div className='container project-card-container'>
+                <div className='project-card-image-wrapper'>
+                    <Image
+                        src={`${project.baseImgUrl}${project.imageUrls[0]}`}
+                        alt={project.title}
+                        fill
+                        className='project-card-image'
+                    />
+                    <div className='project-card-overlay'>
+                        <span className='text-white font-medium'>View Project Details &rarr;</span>
+                    </div>
+                </div>
+                <div className='project-card-content'>
+                    <div className='flex items-start justify-between gap-4'>
+                        <div>
+                            <h2 className='project-card-title'>
+                                { project.title }
+                            </h2>
+                        </div>
+                        <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center shadow-md bg-gradient-to-r ${project.gradientFrom} ${project.gradientTo}`}>
+                            <span className='text-2xl'>
+                                { project.symbol }
+                            </span>
+                        </div>
+                    </div>
+
+                    <p className='text-secondary leading-relaxed line-clamp-3 flex-grow'>
+                        { project.oneLiner }
+                    </p>
+
+                    <div className='pt-2'>
+                        <TechStack 
+                            tools={project.tags} 
+                            limit={3} 
+                            showIcon={false} 
                         />
-                    ) : project.devpost ? (
-                        <NavButton
-                            icon={<Pencil2Icon />}
-                            title='Devpost'
-                            href={project.devpost}
-                            type='secondary'
-                        />
-                    ) : (
-                        <NavButton
-                            icon={<GitHubLogoIcon />}
-                            title='View Code'
-                            href={project.gitHub}
-                            type='secondary'
-                        />
-                    )
-                }
+                    </div>
+                </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
 const Projects = () => {
     return (
-        <div className='flex flex-col space-y-8'>
-            <div className='space-y-4'>
-                <h1 className='text-5xl font-bold'>
+        <div className='flex flex-col space-y-12'>
+            <div className='space-y-6 text-left'>
+                <h1 className='text-5xl font-bold tracking-tight'>
                     Projects.
                 </h1>
-                <p className='text-xl text-secondary leading-relaxed max-w-4xl'>
+                <p className='text-xl text-secondary leading-relaxed max-w-3xl'>
                     A showcase of innovative solutions I&apos;ve built, demonstrating my journey in full-stack development and problem-solving. Each project represents a learning experience and technical challenge overcome.
                 </p>
             </div>
-            <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+            
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                 {
                     projects.map((project, index) => (
-                        <Card key={index} project={project} />
+                        <ProjectCard key={index} project={project} />
                     ))
                 }
             </div>

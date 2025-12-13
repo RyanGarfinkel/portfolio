@@ -3,15 +3,15 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import Slider from 'react-slick';
 import { IconNavButton } from './button';
-import '@/styles/project.css';
+import '@/styles/components.css';
 
 interface CarouselProps {
     basePath: string;
     images: string[];
 };
 
-const currentStyle = 'border-primary w-8 h-4 shadow-lg rounded-full';
-const inactiveStyle = 'border-primary w-3 h-3 rounded-full';
+const currentStyle = 'border-foreground w-8 h-4 shadow-lg rounded-full';
+const inactiveStyle = 'border-foreground w-3 h-3 rounded-full';
 
 const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,14 +33,14 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
                             <video
                                 src={filePath}
                                 controls
-                                className='object-cover w-full h-full'
+                                className='object-contain w-full h-full bg-black/5'
                             />
                         ) : (
                             <Image
                                 src={filePath}
                                 alt='Project media'
                                 fill
-                                className='object-cover'
+                                className='object-contain bg-black/5'
                                 draggable={false}
                                 unoptimized
                             />
@@ -79,13 +79,13 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
                                             <video
                                                 src={filePath}
                                                 controls
-                                                className='object-cover w-full h-full'
+                                                className='object-contain w-full h-full bg-black/5'
                                             />
                                         ) : (
                                             <Image
                                                 src={filePath}
                                                 alt={`Project media ${index + 1}`}
-                                                className='object-cover transition-all duration-500 ease-in-out'
+                                                className='object-contain transition-all duration-500 ease-in-out bg-black/5'
                                                 draggable={false}
                                                 unoptimized
                                                 fill
@@ -106,17 +106,19 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
                     ariaLabel='Previous media'
                 />
                 <div className='flex justify-center items-center gap-3'>
-                    {images.map((_, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => {
-                                sliderRef.current?.slickGoTo(idx);
-                                setCurrentSlide(idx);
-                            }}
-                            className={`transition-all duration-300 border-2 ${currentSlide === idx ? currentStyle : inactiveStyle}`}
-                            aria-label={`Go to media ${idx + 1}`}
-                        />
-                    ))}
+                    {
+                        images.map((_, idx) => (
+                            <button
+                                key={idx}
+                                onClick={() => {
+                                    sliderRef.current?.slickGoTo(idx);
+                                    setCurrentSlide(idx);
+                                }}
+                                className={`transition-all duration-300 border focus-visible:outline-none focus-visible:ring-[0.5px] focus-visible:ring-foreground focus-visible:ring-offset-2 ${currentSlide === idx ? currentStyle : inactiveStyle}`}
+                                aria-label={`Media ${idx + 1}`}
+                            />
+                        ))
+                    }
                 </div>
                 <IconNavButton
                     icon={<ChevronRightIcon />}
