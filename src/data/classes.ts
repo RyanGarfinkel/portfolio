@@ -21,10 +21,10 @@ const courseHistory: Semester[] = [
                 prefix: 'ISC 4242',
                 name: 'Data Science II',
             },
-            {
-                prefix: 'COP 4970H',
-                name: 'Honors Thesis I',
-            },
+            // {
+            //     prefix: 'COP 4970H',
+            //     name: 'Honors Thesis I',
+            // },
         ],
         isCurrent: true,
     },
