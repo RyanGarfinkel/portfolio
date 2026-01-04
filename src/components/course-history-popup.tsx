@@ -2,40 +2,43 @@
 
 import { Cross1Icon, CalendarIcon, BookmarkIcon } from '@radix-ui/react-icons';
 import courseHistory, { type Semester } from '../data/classes';
-import { IconNavButton } from './button';
 import { useEffect, useRef } from 'react';
+import { IconNavButton } from './button';
 
 interface CourseHistoryPopupProps {
     isOpen: boolean;
     onClose: () => void;
-}
+};
 
 const CourseHistoryPopup = ({ isOpen, onClose }: CourseHistoryPopupProps) => {
+
     const dialogRef = useRef<HTMLDivElement>(null);
     const closeButtonRef = useRef<HTMLButtonElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (isOpen) {
-            // Prevent body scroll
+
+        if (isOpen)
+        {
             document.body.style.overflow = 'hidden';
-            
-            // Focus the content area when dialog opens to allow immediate scrolling
+
             contentRef.current?.focus();
 
-            // Handle keyboard navigation
             const handleKeyDown = (e: KeyboardEvent) => {
-                if (e.key === 'Escape') {
+                if (e.key === 'Escape')
                     onClose();
-                } else if (e.key === 'Tab') {
-                    e.preventDefault(); // Lock focus
-                } else if (contentRef.current) {
-                    // Manual scroll handling
+                else if (e.key === 'Tab')
+                    e.preventDefault();
+                else if (contentRef.current)
+                {
                     const scrollAmount = 40;
-                    if (e.key === 'ArrowDown') {
+                    if (e.key === 'ArrowDown')
+                    {
                         e.preventDefault();
                         contentRef.current.scrollTop += scrollAmount;
-                    } else if (e.key === 'ArrowUp') {
+                    }
+                    else if (e.key === 'ArrowUp')
+                    {
                         e.preventDefault();
                         contentRef.current.scrollTop -= scrollAmount;
                     }
@@ -51,12 +54,12 @@ const CourseHistoryPopup = ({ isOpen, onClose }: CourseHistoryPopupProps) => {
         }
     }, [isOpen, onClose]);
 
-    if (!isOpen) return null;
+    if (!isOpen)
+        return null;
 
     const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (e.target === e.currentTarget) {
+        if (e.target === e.currentTarget)
             onClose();
-        }
     };
 
     return (
