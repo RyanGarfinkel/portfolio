@@ -1,13 +1,11 @@
 'use client';
 
-import { ChevronRightIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { LightDarkModeToggle, TextNavButton } from './button';
+import { ChevronRightIcon } from '@radix-ui/react-icons';
 import { useEffect, useRef, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { TextNavButton } from './button';
 import Dropdown from './dropdown';
 
 const Navbar = () => {
-    const { setTheme, resolvedTheme } = useTheme();
     const [shouldRotate, setShouldRotate] = useState(false);
 
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -21,8 +19,6 @@ const Navbar = () => {
     useEffect(() => {
         setMounted(true);
     }, []);
-
-    const toggleTheme = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
 
     const handleClickOutside = (event: MouseEvent) => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node))
@@ -91,11 +87,7 @@ const Navbar = () => {
                             )
                         }
                     </div>
-                    <button onClick={toggleTheme} className='p-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background'>
-                        {
-                            resolvedTheme === 'dark' ? <SunIcon /> : <MoonIcon />
-                        }
-                    </button>
+                    <LightDarkModeToggle />
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
 
 'use client';
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons';
+import { ArrowLeftIcon, ArrowRightIcon, MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
@@ -104,7 +105,7 @@ const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href
     return (
         <Link 
             href={href}
-            className='group container p-6 rounded-xl border border-primary/10 transition-all duration-300'
+            className='group container p-6 rounded-xl border border-primary/10'
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
@@ -119,4 +120,29 @@ const IconDescButton: React.FC<IconDescButton> = ({ icon, hoverIcon, title, href
     );
 };
 
-export { NavButton, BackButton, TextNavButton, IconNavButton, IconDescButton };
+const LightDarkModeToggle: React.FC = () => {
+    
+    const { setTheme, resolvedTheme } = useTheme();
+    const toggleTheme = () => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+
+    return (
+        <button 
+            className='p-2 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-foreground focus:ring-offset-2 focus:ring-offset-background'
+            onClick={toggleTheme}
+        >   
+            {
+                resolvedTheme === 'dark' ? (
+                    <SunIcon 
+                        className='w-6 h-6 cursor-pointer hover:text-yellow-600 transition-colors' 
+                    />
+                ) : (
+                    <MoonIcon 
+                        className='w-6 h-6 cursor-pointer hover:text-gray-600 transition-colors' 
+                    />
+                )
+            }
+        </button>
+    );
+};
+
+export { NavButton, BackButton, TextNavButton, IconNavButton, IconDescButton, LightDarkModeToggle };

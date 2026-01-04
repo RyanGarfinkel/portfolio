@@ -1,8 +1,8 @@
 import projects, { Project } from '@/data/projects';
+import ItemList from '@/components/item-list';
+import '@/styles/components.css';
 import Image from 'next/image';
 import Link from 'next/link';
-import '@/styles/components.css';
-import TechStack from '@/components/tech-stack';
 
 interface ProjectCardProps {
     project: Project;
@@ -11,7 +11,7 @@ interface ProjectCardProps {
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
         <Link href={`/projects/${project.id}`} className='project-card-link'>
-            <div className='container project-card-container'>
+            <div className='container project-card-container hover-grow'>
                 <div className='project-card-image-wrapper'>
                     <Image
                         src={`${project.baseImgUrl}${project.imageUrls[0]}`}
@@ -42,10 +42,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     </p>
 
                     <div className='pt-2'>
-                        <TechStack 
-                            tools={project.tags} 
-                            limit={3} 
-                            showIcon={false} 
+                        <ItemList
+                            items={project.tags}
+                            type='str'
+                            limit={3}
+                            compact
                         />
                     </div>
                 </div>

@@ -12,6 +12,8 @@
   --text-primary: var(--foreground);
   --text-secondary: #555555;
   --container-border: rgba(44, 44, 44, 0.22);
+  --quote-background: rgba(26, 26, 26, 0.05);
+  --selection-background: rgba(26, 26, 26, 0.2);
 
   --success-background: rgba(4, 120, 87, 0.88);
   --success-border: #047857;
@@ -29,9 +31,16 @@
   --text-primary: var(--foreground);
   --text-secondary: #aaaaaa;
   --container-border: rgba(209, 209, 209, 0.22);
+  --quote-background: rgba(230, 230, 230, 0.05);
+  --selection-background: rgba(230, 230, 230, 0.2);
 
   --success-background: rgba(4, 120, 87, 0.22);
   --failure-background: rgba(239, 68, 68, 0.22);
+}
+
+::selection {
+  background: var(--selection-background);
+  color: inherit;
 }
 
 body {
@@ -114,6 +123,9 @@ button:focus, .link:focus, .dropdown:focus {
   .bg-primary {
     background: var(--text-primary);
   }
+  .bg-quote {
+    background: var(--quote-background);
+  }
 
   .text-lg {
     font-size: 1.125rem;
@@ -124,5 +136,14 @@ button:focus, .link:focus, .dropdown:focus {
     background: var(--hover-background);
     box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
     transition: background 0.2s, box-shadow 0.2s;
+  }
+
+  .hover-grow {
+    transition: all 300ms ease-in-out;
+  }
+
+  .hover-grow:hover {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: translateY(-0.25rem) scale(1.01);
   }
 }

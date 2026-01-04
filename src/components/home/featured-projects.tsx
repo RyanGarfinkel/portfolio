@@ -8,10 +8,10 @@ interface MiniProjectCardProps {
     project: Project;
 };
 
-const MiniProjectCardProps: React.FC<MiniProjectCardProps> = ({ project }) => {
+const MiniProjectCard: React.FC<MiniProjectCardProps> = ({ project }) => {
 
     return (
-        <Link href={`/projects/${project.id}`} className='container p-6 rounded-2xl space-y-4 group'>
+        <Link href={`/projects/${project.id}`} className='container p-6 rounded-2xl space-y-4 group project-card-mini'>
             <div className='flex items-center gap-3'>
                 <div className={`w-12 h-12 bg-gradient-to-r ${project.gradientFrom} ${project.gradientTo} rounded-full flex items-center justify-center`}>
                     <span className='text-2xl'>{project.symbol}</span>
@@ -50,7 +50,7 @@ const FeaturedProjects = () => {
 
                 {
                     featuredProjects.map((project, index) => (
-                        <MiniProjectCardProps key={index} project={project} />
+                        <MiniProjectCard key={index} project={project} />
                     ))
                 }
             </div>
