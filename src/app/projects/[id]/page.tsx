@@ -1,12 +1,12 @@
 'use client';
 
+import { BackButton, NavButton } from '@/components/button';
 import projects, { Project } from '@/data/projects';
+import { Link2Icon } from '@radix-ui/react-icons';
+import ItemList from '@/components/item-list';
+import Carousel from '@/components/carousel';
 import { notFound } from 'next/navigation';
 import { use } from 'react';
-import { BackButton, NavButton } from '@/components/button';
-import Carousel from '@/components/carousel';
-import TechStack from '@/components/tech-stack';
-import { Link2Icon } from '@radix-ui/react-icons';
 
 interface ProjectPageProps {
     params: Promise<{ id: string }>;
@@ -90,7 +90,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                     </div>
                     <div className='container p-6 rounded-2xl'>
                         <h3 className='font-semibold text-lg mb-4'>Technologies</h3>
-                        <TechStack tools={project.tags} />
+                        <ItemList items={project.tags} type='tools' compact />
                     </div>
                 </div>
             </div>

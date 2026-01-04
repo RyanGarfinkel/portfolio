@@ -1,17 +1,16 @@
-import { FileTextIcon, GitHubLogoIcon, LinkedInLogoIcon, PaperPlaneIcon, PersonIcon, ReaderIcon, UpdateIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, LinkedInLogoIcon, PersonIcon, UpdateIcon } from '@radix-ui/react-icons';
 import { forwardRef, useEffect, useRef, useState } from 'react';
+import { ResumeIcon, SendIcon } from './icons';
 import Link from 'next/link';
 import '@/styles/components.css';
 
 interface OptionProps {
     Icon: React.ElementType;
-    HoverIcon?: React.ElementType;
     title: string;
     description: string;
     href: string;
     openInNewTab?: boolean;
     withSpinner?: boolean;
-    rotateOnHover?: boolean;
     onKeyDown?: React.KeyboardEventHandler<HTMLAnchorElement>;
 };
 
@@ -20,9 +19,8 @@ interface DropdownProps {
     shouldFocus: boolean;
 };
 
-const Option = forwardRef<HTMLAnchorElement, OptionProps>(({ Icon, HoverIcon, title, description, href, openInNewTab, withSpinner, rotateOnHover, onKeyDown }, ref) => {
+const Option = forwardRef<HTMLAnchorElement, OptionProps>(({ Icon, title, description, href, openInNewTab, withSpinner, onKeyDown }, ref) => {
 
-    const [isHovered, setIsHovered] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     
     const handleClick = () => withSpinner && setIsLoading(true);
@@ -36,13 +34,9 @@ const Option = forwardRef<HTMLAnchorElement, OptionProps>(({ Icon, HoverIcon, ti
             rel='noopener noreferrer'
             className={'group flex items-center px-4 py-2 text-left text-primary rounded-2xl container-borderless relative focus:z-10 focus:outline-none focus:bg-foreground/5 focus:ring-2 focus:ring-foreground active:bg-foreground/5'}
             onClick={handleClick}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
         >
-            <div className=''>
-                <div className='mr-4 container-foreground rounded-2xl p-3'>
-                    { HoverIcon && isHovered ? <HoverIcon className='w-7 h-7'/> : <Icon className={`w-7 h-7 ${rotateOnHover ? 'group-hover:-rotate-12 transition-transform duration-300' : ''}`}/> }
-                </div>
+            <div className='mr-4 container-foreground rounded-2xl p-3'>
+                <Icon className='w-7 h-7'/>
             </div>
             <div className='flex flex-col items-start min-w-0'>
                 <span className='dropdown-title font-semibold flex items-center gap-2'>
@@ -148,8 +142,7 @@ const Dropdown: React.FC<DropdownProps> = ({ onClose, shouldFocus }) => {
                 openInNewTab
             />
             <Option
-                Icon={FileTextIcon}
-                HoverIcon={ReaderIcon}
+                Icon={ResumeIcon}
                 title='My Resume'
                 description='View my resume.'
                 href='/resume'
@@ -158,13 +151,12 @@ const Dropdown: React.FC<DropdownProps> = ({ onClose, shouldFocus }) => {
                 withSpinner
             />
             <Option
-                Icon={PaperPlaneIcon}
+                Icon={SendIcon}
                 title='Contact Me'
                 description='Send me a message.'
                 href='/contact'
                 onKeyDown={(e) => handleKeyDown(e, 4)}
                 ref={el => { itemsRef.current[4] = el; }}
-                rotateOnHover
             />
         </div>
     );

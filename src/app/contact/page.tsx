@@ -1,9 +1,10 @@
 'use client';
 
-import { CheckCircledIcon, EnvelopeClosedIcon, EnvelopeOpenIcon, ExclamationTriangleIcon, GitHubLogoIcon, LinkedInLogoIcon, PaperPlaneIcon } from '@radix-ui/react-icons';
+import { CheckCircledIcon, EnvelopeClosedIcon, EnvelopeOpenIcon, ExclamationTriangleIcon, GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
 import { useEffect, useState } from 'react';
 import { NavButton } from '@/components/button';
 import '../../styles/contact.css';
+import { SendIcon } from '@/components/icons';
 
 interface InputLabelProps {
     label: string;
@@ -232,7 +233,7 @@ const Contact = () => {
                         )
                     }
                     <button type='submit' className='container flex items-center w-fit gap-2 p-3 rounded-2xl group' disabled={isDisabled}>
-                        <PaperPlaneIcon className='transition-transform duration-200 group-hover:-rotate-12' />
+                        <SendIcon />
                         Send
                     </button>
                 </div>

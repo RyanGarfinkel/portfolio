@@ -1,5 +1,7 @@
-import { GitHubLogoIcon, LinkedInLogoIcon, EnvelopeClosedIcon, EnvelopeOpenIcon } from '@radix-ui/react-icons';
+import { GitHubLogoIcon, LinkedInLogoIcon } from '@radix-ui/react-icons';
+import { MailIcon } from './icons';
 import Link from 'next/link';
+import '@/styles/components.css';
 
 const links = [
     { title: 'Home', href: '/' },
@@ -56,8 +58,7 @@ const Footer = () => {
                                 href='/contact'
                                 className='group w-10 h-10 rounded-lg flex items-center justify-center text-secondary hover:text-primary focus:text-primary focus:outline-none focus:border focus:border-primary focus:rounded-full transition-all'
                             >
-                                <EnvelopeClosedIcon className='w-5 h-5 group-hover:hidden' />
-                                <EnvelopeOpenIcon className='w-5 h-5 hidden group-hover:block' />
+                                <MailIcon className='w-5 h-5' />
                             </Link>
                         </div>
                         <p className='text-secondary text-lg mt-3 md:mt-0 md:ml-6'>
