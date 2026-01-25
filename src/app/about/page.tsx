@@ -1,5 +1,10 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Carousel from '@/components/carousel';
+
+interface AboutSectionProps {
+    title: string;
+    children: React.ReactNode;
+};
 
 const ucfLink = (
     <Link
@@ -12,6 +17,28 @@ const ucfLink = (
     </Link>
 );
 
+const codepathLink = (
+    <Link
+        href='https://codepath.org/'
+        className='underline underline-offset-4 hover:text-primary/80 transition-colors focus:text-primary focus:ring-0 focus:outline-none'
+        target='_blank'
+        rel='noopener noreferrer'
+    >
+        CodePath
+    </Link>
+);
+
+const AboutSection: React.FC<AboutSectionProps> = ({ title, children }) => {
+    return (
+        <div className='flex flex-col gap-2'>
+            <h2 className='font-bold'>{title}</h2>
+            <div className='flex sm:flex-col md:flex-row justify-between gap-8'>
+                {children}
+            </div>
+        </div>
+    );
+};
+
 const About = () => {
 
     return (
@@ -19,61 +46,110 @@ const About = () => {
             <h1>
                 About Me.
             </h1>
-            <p className='text-xl text-secondary italic'>
-                &ldquo;The only true wisdom is in knowing you know nothing&rdquo; — Socrates
-            </p>
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10'>
-                <div className='container h-fit p-6 rounded-2xl space-y-4'>
-                    <Image 
-                        src='/assets/profile.png' 
-                        alt='Professional headshot' 
-                        width={300} 
-                        height={300} 
-                        className='w-full rounded-xl object-cover'
-                    />
-                    <p className='text-sm text-secondary text-center italic'>
-                        My very professional headshot.
+            <div className='flex flex-col my-8 gap-12'>
+                <AboutSection title='Educational & Technical Foundation'>
+                    <p className='text-lg text-secondary w-1/2'>
+                        I’m currently working toward a Bachelor of Science in Computer Science at the {ucfLink},
+                        where I’ve built a strong technical foundation in software engineering
+                        principles and best practices. My coursework and projects emphasize understanding
+                        how systems are designed, maintained, and improved over time, not just how to make
+                        something work once. I focus on connecting clean implementation with real user needs
+                        through both academic and practical work.
                     </p>
+                    <div className='w-1/2 relative min-h-[250px]'>
+                        <Carousel
+                            basePath='/assets/about/'
+                            images={['hd10.png', 'kh7.jpeg']}
+                            className='absolute inset-0 h-full w-full'
+                        />
+                    </div>
+                </AboutSection>
+                <AboutSection title='Building Software in Practice'>
+                    <p className='text-xl text-secondary'>
+                        Through internships, group projects, and independent work, I’ve contributed production-level
+                        code and operated within real development workflows. I’ve participated across the software
+                        development lifecycle — from requirements gathering and planning to implementation and iteration
+                        — which reinforced that writing code is only one part of building effective software. Clear
+                        communication, thoughtful design, and collaboration consistently matter just as much.
+                    </p>
+                </AboutSection>
+                <AboutSection title='Mentorship & Leadership'>
+                    <p className='text-xl text-secondary'>
+                        Alongside building software, I’ve spent multiple semesters mentoring other students in computer
+                        science. I’ve served as an Undergraduate Learning Assistant at UCF and as a peer mentor through { codepathLink},
+                        supporting new students as they worked through unfamiliar concepts, tools, and debugging
+                        challenges. Teaching at scale has sharpened how I reason about problems, identify patterns, and
+                        build systems that are understandable and resilient.
+                    </p>
+                </AboutSection>
+                <div className="border-l-4 border-primary pl-6 py-4 my-8 bg-quote rounded-r-lg">
+                    <p className="text-xl italic text-secondary mb-2">
+                        &quot;You do not rise to the level of your goals. You fall to the level of your systems.&quot;
+                    </p>
+                    <p className="text-xl text-primary">James Clear</p>
                 </div>
-                <div className='lg:col-span-2 space-y-8'>
-                    <div className='space-y-6'>
-                        <h2 className='text-2xl font-bold'>Education & Current Focus</h2>
-                        <p className='text-lg text-secondary'>
-                            I&apos;m currently studying Computer Science at the { ucfLink }, focused on building a strong technical foundation in
-                            software development principles and best practices. Beyond my coursework, I&apos;ve gained hands-on experience contributing
-                            production-level code through internships and group projects.
-                        </p>
+                <AboutSection title='How It Started'>
+                    <p className='text-lg text-secondary w-1/2'>
+                        My interest in building things began early through hands-on experiences like robotics programs
+                        and programming coursework during middle and high school. Those early projects shaped how I
+                        approach engineering today — learning by building, testing assumptions, and improving through
+                        iteration rather than relying solely on theory.
+                    </p>
+                    <div className='w-1/2 relative min-h-[250px]'>
+                        <Carousel
+                            basePath='/assets/about/'
+                            images={['robotics1.png', 'robotics2.jpg']}
+                            className='absolute inset-0 h-full w-full'
+                        />
                     </div>
-                    <div className='space-y-6'>
-                        <h2 className='text-2xl font-bold'>Professional Experience</h2>
-                        <p className='text-lg text-secondary'>
-                            My industry experience as an intern has reinforced what I&apos;ve learned in the classroom and helped fill in the gaps,
-                            giving me a front-row view of how software is built in practice. I&apos;ve had the opportunity to participate in the full
-                            software development life cycle (SDLC)—from requirements gathering and sprint planning to deployment. It&apos;s shown me
-                            that writing code is only one part of the process, and that clear communication and collaboration are vital to delivering
-                            successful software solutions.
-                        </p>
-                    </div>
-                    <div className='space-y-6'>
-                        <h2 className='text-2xl font-bold'>How It All Started</h2>
-                        <p className='text-lg text-secondary'>
-                            My passion for building things started early — with LEGOs and Lincoln Logs. During middle school, my parents sent me to a
-                            robotics camp where I was first introduced to programming during a LEGO Mindstorms sumo bot competition. In high school, I
-                            took introductory and AP-level programming classes, where my teachers inspired me and helped me realize that I wanted to
-                            pursue a career in software development.
-                        </p>
-                    </div>
-                    <div className='space-y-6'>
-                        <h2 className='text-2xl font-bold'>Looking Forward</h2>
-                        <p className='text-lg text-secondary'>
-                            During my time at UCF, I&apos;ve paired that early passion with a strong technical foundation and clearer sense of
-                            direction. Building things is at the core of who I am, and I get excited about the future of technology and software
-                            development. As AI becomes more dominant, I&apos;ve become increasingly curious about its potential to transform industries
-                            and support data-driven decision making. I&apos;m eager to embrace and build AI-powered solutions to empower people and
-                            drive innovation.
-                        </p>
-                    </div>
+                </AboutSection>
+                <AboutSection title='Looking Forward'>
+                    <p className='text-lg text-secondary'>
+                        At UCF, I’ve paired that early curiosity with a clearer sense of direction and a growing technical
+                        toolkit. I’m particularly interested in software that leverages data and intelligent systems to
+                        support better decision-making. As AI continues to mature, I want to focus on building practical,
+                        well-reasoned solutions that create real value rather than chasing trends.
+                    </p>
+                </AboutSection>
+                <div className="border-l-4 border-primary pl-6 py-4 my-8 bg-quote rounded-r-lg">
+                    <p className="text-xl italic text-secondary mb-2">
+                        &quot;You have power over your mind — not outside events. Realize this, and you will find strength.&quot;
+                    </p>
+                    <p className="text-xl text-primary">Marcus Aurelius</p>
                 </div>
+                <AboutSection title='Guiding Principles'>
+                    <div className='flex flex-col gap-4'>
+                        <div className='flex flex-col'>
+                            <h3>
+                                Systems Thinking
+                            </h3>
+                            <p className='text-lg text-secondary'>
+                                I focus on creating systems where structure, behavior, and presentation tell the same story, while balancing
+                                elegance and functionality according to stakes. A well-aligned system should be easy to interface with because
+                                clarity and coherence allow it to be trusted, understood, and satisfying to interact with.
+                            </p>
+                        </div>
+                        <div className='flex flex-col'>
+                            <h3>
+                                Continuous Learning
+                            </h3>
+                            <p className='text-lg text-secondary'>
+                                In the ever-evolving field of technology, staying curious is essential. I believe comiting to a lifetime of
+                                learning helps me stay humble and open to new ideas. I find there are always new ways to optimize systems and 
+                                features to provide more efficient and valuable services.
+                            </p>
+                        </div>
+                        <div className='flex flex-col'>
+                            <h3>
+                                Collaboration & Mentorship
+                            </h3>
+                            <p className='text-lg text-secondary'>
+                                The collective wisdom of the teams I've been a part of have been vital to my success. In group settings, ideas
+                                get to be challenged and tested, forcing us to think through solutions more deeply and produce better outcomes.
+                            </p>
+                        </div>
+                    </div>
+                </AboutSection>
             </div>
         </div>
     );

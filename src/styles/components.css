@@ -23,8 +23,11 @@
     font-size: 0.875rem;
     line-height: 1.25rem;
     transition: all 200ms;
-    cursor: default;
 
+    &:not(.link) {
+        cursor: default;
+    }
+    
     background-color: color-mix(in srgb, var(--foreground) 5%, transparent);
     border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
     color: color-mix(in srgb, var(--foreground) 80%, transparent);
@@ -35,13 +38,22 @@
     border-color: color-mix(in srgb, var(--foreground) 30%, transparent);
 }
 
-/* Carousel */
-.carousel-slider .slick-slide {
-  outline: none;
+.tech-tag:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--foreground);
 }
 
+/* Carousel */
+.carousel-slider,
+.carousel-slider .slick-list,
+.carousel-slider .slick-track,
+.carousel-slider .slick-slide,
 .carousel-slider .slick-slide > div {
-  height: 500px;
+  height: 100%;
+}
+
+.carousel-slider .slick-slide {
+  outline: none;
 }
 
 .carousel-slider .slick-list {
@@ -76,12 +88,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: all 300ms;
-}
-
-.project-card-link:hover .project-card-container {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    transform: translateY(-0.25rem);
 }
 
 .project-card-image-wrapper {
@@ -191,12 +197,6 @@
     padding: 1.25rem;
     border-radius: 0.75rem;
     border: 1px solid color-mix(in srgb, var(--foreground) 10%, transparent);
-    transition: all 200ms;
-}
-
-.semester-card:hover {
-    border-color: color-mix(in srgb, var(--foreground) 20%, transparent);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 .semester-header {
@@ -243,4 +243,109 @@
 @keyframes slideInBottom {
     from { transform: translateY(1rem); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+}
+
+/* Job Card */
+.job-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.job-location-badge {
+    display: none;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--text-secondary);
+    background-color: var(--hover-background);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+@media (min-width: 768px) {
+    .job-location-badge {
+        display: flex;
+    }
+}
+
+.job-expand-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--container-border);
+    transition: all 200ms;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.job-expand-button:hover {
+    background-color: var(--hover-background);
+}
+
+.job-expand-button:focus-visible {
+    outline: none;
+    border-color: var(--foreground);
+}
+
+.job-details-wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms ease-in-out;
+}
+
+.job-details-wrapper.expanded {
+    grid-template-rows: 1fr;
+}
+
+.job-details-inner {
+    overflow: hidden;
+}
+
+/* Icons */
+a:focus-visible {
+    .mail-open, .resume-filetext {
+        display: block;
+    }
+    .mail-closed, .resume-reader {
+        display: none;
+    }
+}
+
+/* Links */
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; 
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    width: fit-content;
+    background-color: transparent;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+
+.link-item:hover {
+    background-color: var(--hover-background);
+}
+
+.link-item:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--foreground);
 }

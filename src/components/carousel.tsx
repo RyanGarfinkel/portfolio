@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
@@ -8,14 +10,16 @@ import '@/styles/components.css';
 interface CarouselProps {
     basePath: string;
     images: string[];
+    className?: string;
 };
 
 const currentStyle = 'border-foreground w-8 h-4 shadow-lg rounded-full';
 const inactiveStyle = 'border-foreground w-3 h-3 rounded-full';
 
-const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
+const Carousel: React.FC<CarouselProps> = ({ basePath, images, className }) => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const sliderRef = useRef<Slider>(null);
+    const heightClass = className || 'h-[500px]';
 
     const prevImage = () => sliderRef.current?.slickPrev();
     const nextImage = () => sliderRef.current?.slickNext();
@@ -26,8 +30,8 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
         const isVideo = filePath.endsWith('.mp4');
 
         return (
-            <div className='relative flex flex-col items-center w-full max-w-4xl mx-auto'>
-                <div className='relative w-full overflow-hidden rounded-2xl h-[500px] shadow-2xl'>
+            <div className={`relative flex flex-col items-center w-full max-w-4xl mx-auto ${heightClass}`}>
+                <div className='relative w-full overflow-hidden rounded-2xl h-full shadow-2xl'>
                     {
                         isVideo ? (
                             <video
@@ -63,9 +67,9 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
     };
 
     return (
-        <div className='relative flex flex-col items-center w-full max-w-4xl mx-auto'>
-            <div className='relative w-full mb-6'>
-                <div className='relative w-full max-w-4xl h-[500px] overflow-hidden rounded-2xl mx-auto'>
+        <div className={`relative flex flex-col items-center w-full max-w-4xl mx-auto ${heightClass}`}>
+            <div className='relative w-full flex-1 min-h-0 mb-2'>
+                <div className='relative w-full max-w-4xl h-full overflow-hidden rounded-2xl mx-auto'>
                     <Slider ref={sliderRef} {...settings}>
                         {
                             images.map((file, index) => {
@@ -73,7 +77,7 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
                             const isVideo = filePath.endsWith('.mp4');
 
                             return (
-                                <div key={index} className='relative h-[500px]'>
+                                <div key={index} className='relative h-full'>
                                     {
                                         isVideo ? (
                                             <video
@@ -99,7 +103,7 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images }) => {
                     </Slider>
                 </div>
             </div>
-            <div className='flex items-center justify-between w-full'>
+            <div className='flex items-center justify-between w-full h-8 shrink-0'>
                 <IconNavButton
                     icon={<ChevronLeftIcon />}
                     onClick={prevImage}
