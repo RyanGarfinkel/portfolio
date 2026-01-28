@@ -75,10 +75,21 @@ const Carousel: React.FC<CarouselProps> = ({ basePath, images, className }) => {
                             images.map((file, index) => {
                             const filePath = `${basePath}${file}`;
                             const isVideo = filePath.endsWith('.mp4');
+                            const isYouTube = filePath.includes('youtube.com');
+                            const youtubeEmbed = isYouTube ? file.split('v=')[1] : null;
 
                             return (
                                 <div key={index} className='relative h-full'>
                                     {
+                                        isYouTube ? (
+                                            <iframe
+                                                src={`https://www.youtube.com/embed/${youtubeEmbed}`}
+                                                title={`YouTube video player ${index + 1}`}
+                                                className='w-full h-full bg-black/5 rounded-2xl'
+                                                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                                                allowFullScreen
+                                            />
+                                        ) :
                                         isVideo ? (
                                             <video
                                                 src={filePath}

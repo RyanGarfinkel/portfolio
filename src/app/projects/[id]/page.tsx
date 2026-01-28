@@ -69,7 +69,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
                             {
                                 project.devpost && (
                                     <NavButton 
-                                        title='View Demo'
+                                        title='View Devpost'
                                         href={project.devpost}
                                         type='primary'
                                         className='w-full justify-center'

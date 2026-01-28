@@ -18,6 +18,25 @@ interface Project {
 
 const projects: Project[] = [
     {
+        id: 'pee',
+        title: 'Performance Evaluation Engine',
+        date: 'Oct. 20266',
+        oneLiner: 'Clash Royale/GitHub tool to evaluate performance for busy software developers.',
+        desc: [
+            'Built performance scoring engine during KnightHacks VIII to rank GitHub commits with Clash Royale performance.',
+            'Used Google Gemini and Clash Royale API to analyze gameplay and generate personalized deck optimizations.',
+            'Integrated GitHub OAuth for secure user access and data retrieval.',
+        ],
+        baseImgUrl: '/assets/pee/',
+        imageUrls: ['1.jpg', 'https://www.youtube.com/watch?v=MKeivAWZeEQ', '2.jpg', '3.jpg'],
+        tags: ['Next.js', 'Vercel', 'React', 'Google Gemini'],
+        gitHub: 'https://github.com/Jpw306/Performance-Evaluation-Engine',
+        devpost: 'https://devpost.com/software/performance-evaluation-engine',
+        symbol: '👑',
+        gradientFrom: 'from-red-400',
+        gradientTo: 'to-yellow-500',
+    },
+    {
         id: 'devtutor',
         title: 'DevTutor',
         date: 'June 2025',
